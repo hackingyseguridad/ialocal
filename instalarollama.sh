@@ -1,8 +1,7 @@
- 
 #!/bin/sh
 # (R) Antonio Taboada - hackingyseguridad.com 2026 
 # Script para instalar ollama y poder ejecutar en local IA
-echo "Instalando herramientas para hacking con IA ... "  
+echo "Instalando herramienta OLLAMA  ... "  
 echo "(R) hackingyseguridad.com 2026 "
 chmod 777 *
 apt-get install zstd
