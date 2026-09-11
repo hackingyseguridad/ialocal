@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://www.hackingyseguridad.com/">
-    <img src="https://github.com/hackingyseguridad/ialocal/raw/main/ialocal.png" alt="ialocal - hackingyseguridad.com" width="600">
+[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ialocal/raw/main/ialocal.png)](https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png)
   </a>
 </p>
 
