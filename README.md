@@ -1,13 +1,12 @@
 
-[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ialocal/raw/main/ialocal.png)](https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png)
-
-
 <h1 align="center">ialocal</h1>
 
 <p align="center">
   <b>Modelos de IA en local, offline y aislados, sin conexión a Internet</b><br>
   Scripts de instalación y arranque rápido para usar asistentes de IA (Ollama, Qwen, Claude Code, OpenCode) como apoyo en tareas de hacking ético y pentesting, sin enviar datos a la nube.
 </p>
+
+[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ialocal/raw/main/ialocal.png)](https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png)
 
 <p align="center">
   <a href="http://www.hackingyseguridad.com/">hackingyseguridad.com</a> ·
