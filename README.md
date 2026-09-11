@@ -1,6 +1,6 @@
 # ialocal
 
-[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ia/raw/main/banner.png)](https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png)
+[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ialocal/raw/main/ialocal.png)](https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png)
 
 ---
 
