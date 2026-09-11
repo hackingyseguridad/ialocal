@@ -17,7 +17,7 @@
 
 ---
 
-## 📋 Índice
+###  Índice
 
 - [¿Qué es ialocal?](#-qué-es-ialocal)
 - [¿Por qué IA local?](#-por-qué-ia-local)
@@ -36,7 +36,7 @@
 
 ---
 
-## 🧠 ¿Qué es ialocal?
+###  ¿Qué es ialocal?
 
 **ialocal** es una pequeña colección de scripts de shell (`.sh`) para **Linux/Debian/Kali** que automatizan la instalación de las herramientas necesarias para tener un asistente de IA funcionando **100% en local**, sin depender de servicios en la nube, y usarlo como copiloto en auditorías de seguridad y pruebas de penetración autorizadas.
 
@@ -48,7 +48,7 @@ En una sola pasada, los scripts dejan preparado el sistema con:
 - **Codex CLI** (OpenAI) y **OpenCode** — CLIs alternativas de agentes de código.
 - Diccionarios de `hackingyseguridad/diccionarios` para pruebas de fuzzing/fuerza bruta.
 
-## 🔒 ¿Por qué IA local?
+###  ¿Por qué IA local?
 
 Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en la nube puede ser un problema de **confidencialidad** y de cumplimiento contractual. Ejecutando el modelo en local con Ollama:
 
@@ -57,7 +57,7 @@ Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o 
 - No hay coste recurrente de API.
 - El rendimiento depende solo de tu hardware (funciona incluso **sin GPU**, usando modelos pequeños en CPU).
 
-## 📂 Contenido del repositorio
+### Contenido del repositorio
 
 | Archivo | Descripción |
 |---|---|
@@ -70,7 +70,7 @@ Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o 
 | `LICENSE` | Licencia MIT (ES/EN) ampliada con cláusulas de seguridad y referencias legales (España, UE, CFAA, Computer Misuse Act, etc.). |
 | `ialocal.png`, `banner0.png`, `banner2.png` | Recursos gráficos del proyecto. |
 
-## ✅ Requisitos
+###  Requisitos
 
 - Distribución basada en **Debian/Ubuntu/Kali Linux** (los scripts usan `apt-get`/`apt`).
 - Acceso a `sudo` / usuario `root`.
@@ -78,7 +78,7 @@ Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o 
 - Espacio en disco suficiente para los modelos (varían entre ~1 GB y varios GB según el modelo elegido).
 - Opcional: GPU compatible para acelerar la inferencia (los scripts también funcionan solo con CPU).
 
-## 🚀 Instalación
+### Instalación
 
 Clona el repositorio y da permisos de ejecución a los scripts:
 
@@ -103,7 +103,7 @@ Al finalizar, el script indica los siguientes pasos manuales:
 3. Abre el enlace de autorización OAuth que muestra la terminal, autoriza el acceso y pega el código en la consola.
 4. Repite un proceso equivalente de autenticación para Ollama si tu flujo lo requiere.
 
-> ⚠️ El script modifica la zona horaria del sistema a `Europe/Madrid` y sincroniza la hora vía NTP (`timedatectl`, `ntpdate`). Revisa esas líneas si tu servidor necesita otra zona horaria.
+>  El script modifica la zona horaria del sistema a `Europe/Madrid` y sincroniza la hora vía NTP (`timedatectl`, `ntpdate`). Revisa esas líneas si tu servidor necesita otra zona horaria.
 
 ### Solo Ollama (`instalarollama.sh`)
 
@@ -123,7 +123,7 @@ Instala la CLI de Qwen Code de forma independiente:
 sh instalarqwen.sh
 ```
 
-## 🖥️ Uso: ejecutar modelos en local
+### Uso: ejecutar modelos en local
 
 El script `ollama.sh` documenta cómo lanzar un modelo local **sin GPU**, usando solo CPU, integrado con distintos front-ends de agente:
 
@@ -139,7 +139,7 @@ ollama launch opencode --model lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B
 
 También es posible integrarlo con Claude Code como front-end en lugar de OpenCode, sustituyendo `opencode` por `claude` en el mismo patrón de comando.
 
-## 🤖 Modelos recomendados
+###  Modelos recomendados
 
 | Modelo | Tamaño aprox. | Requiere GPU | Notas |
 |---|---|---|---|
@@ -149,7 +149,7 @@ También es posible integrarlo con Claude Code como front-end en lugar de OpenCo
 | `qwen3:4b` | ~2.5 GB | Opcional | Buen soporte de *tool calling*. |
 | `whiterabbitneo-v1.5a` / `whiterabbitneo7b` | Variable | Opcional | Modelos orientados a ciberseguridad ofensiva. |
 
-## 🔁 Flujo de trabajo típico
+### Flujo de trabajo típico
 
 1. `sudo sh instalar.sh` (o `instalarollama.sh` si solo quieres Ollama).
 2. Descargar el modelo elegido: `ollama pull deepseek-r1:1.5b` (u otro de la tabla anterior).
@@ -157,7 +157,7 @@ También es posible integrarlo con Claude Code como front-end en lugar de OpenCo
 4. Trabajar completamente offline: los prompts, resultados de escaneos y hallazgos no salen de tu máquina.
 5. Documentar y reportar los hallazgos siguiendo las prácticas de divulgación responsable descritas en `DISCLAMER.md`.
 
-## ⚖️ Aviso legal y ético
+### Aviso legal y ético
 
 Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAMER.md) y un [código de conducta](./CODIGODECONDUCTA.md) que **debes leer antes de usarlo**. En resumen:
 
@@ -168,14 +168,13 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 
 **El uso no autorizado de estas herramientas contra sistemas de terceros es ilegal** y puede constituir un delito conforme al Código Penal español, al RGPD, a la Directiva NIS y a normativas equivalentes en otros países (ver detalle completo en [`LICENSE`](./LICENSE)).
 
-## 📄 Licencia
+### Licencia
 
 Licencia MIT (español/inglés) ampliada con cláusulas de seguridad específicas para herramientas de pruebas de penetración. Consulta el archivo [`LICENSE`](./LICENSE) para el texto completo.
 
-## 👤 Autor
+###  Autor
 
-**Antonio Taboada** — [hackingyseguridad.com](http://www.hackingyseguridad.com/)
-📷 Instagram: [@hackingyseguridad](https://www.instagram.com/hackingyseguridad) · 🐦 X: [@antonio_taboada](https://x.com/antonio_taboada) · 💼 [LinkedIn](https://www.linkedin.com/in/antonio-taboada-llufriu)
+[hackingyseguridad.com](http://www.hackingyseguridad.com/)
 
 ---
 
