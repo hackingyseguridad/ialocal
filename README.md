@@ -46,16 +46,17 @@ En una sola pasada, los scripts dejan preparado el sistema con:
 - **[Qwen Code](https://github.com/QwenLM)** — CLI de Qwen para tareas de programación asistida por IA.
 - **Claude Code** — CLI oficial de Anthropic (instalación vía script oficial).
 - **Codex CLI** (OpenAI) y **OpenCode** — CLIs alternativas de agentes de código.
-- Diccionarios de `hackingyseguridad/diccionarios` para pruebas de fuzzing/fuerza bruta.
 
-###  ¿Por qué IA local?
+###  IA en local, aislada
 
 Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en la nube puede ser un problema de **confidencialidad** y de cumplimiento contractual. Ejecutando el modelo en local con Ollama:
 
-- Ningún dato sale de tu máquina.
+- Ningún dato sale de la máquina, PC donde corre la IA en local, pues esta aislado. 
 - Puedes trabajar en redes aisladas / air-gapped.
-- No hay coste recurrente de API.
-- El rendimiento depende solo de tu hardware (funciona incluso **sin GPU**, usando modelos pequeños en CPU).
+- No hay coste recurrente de API., consumo de Tokens, suelen ser modelos OpenSource
+- El rendimiento depende solo de tu hardware (funciona incluso **sin GPU**, usando modelos pequeños en CPU). Los requerimientos para ejectuar en un PC en Local, modelos de IA, son altos: se requiere GPU/CPU,  memoria RAM y velocidad de proceso.
+- Menores habilidades, quiza algunos de estos modelos en local + herramientas, son menos pesados, menor tamaño o mas antiguos y tenga menos habilidades analiticas en la detección de vulnerabilidades, POC o Exploit, comparado con los ultimos  modelos enromes online, en centros de procesos de datos la nube
+
 
 ### Contenido del repositorio
 
