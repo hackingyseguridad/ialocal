@@ -22,18 +22,12 @@
 
 ---
 
-###  repositorio ialocal
+
+
+
+###  IA en local,
 
 **ialocal** es una colección de scripts en lenguaje, bash shell linux, python3 para **Linux/Debian/Kali** que automatizan la instalación de las herramientas necesarias para tener un asistente de IA funcionando **100% en local**, con privacidad , sin depender de servicios en la nube, y usarlo como herramienta para pruebas de deteción de vulnerabilides, pruebas de concepto y explotación , en auditorías de seguridad y pruebas de penetración autorizadas, hacking.
-
-En una sola pasada, los scripts dejan preparado el sistema con:
-
-- **[Ollama](https://ollama.com/)** — motor para ejecutar LLMs de pesos abiertos en local (CPU o GPU).
-- **[Qwen Code](https://github.com/QwenLM)** — CLI de Qwen para tareas de programación asistida por IA.
-- **Claude Code** — CLI oficial de Anthropic (instalación vía script oficial).
-- **Codex CLI** (OpenAI) y **OpenCode** — CLIs alternativas de agentes de código.
-
-###  IA en local, aislada
 
 Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en la nube puede ser un problema de **confidencialidad** y de cumplimiento contractual. Ejecutando el modelo en local con Ollama:
 
