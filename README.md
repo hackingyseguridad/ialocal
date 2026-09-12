@@ -114,8 +114,6 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 | tGPT | <https://github.com/aandrew-me/tgpt> |
 | Enlace adicional | <http://goo.gl/ID8XBX> |
 
-#
-
 # 
 
 <p align="center">
