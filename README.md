@@ -49,7 +49,7 @@ ollama run deepseek-r1:1.5b
 
 # Otros modelos offline, en local
 ollama run gemma3:1b
-ollama run josephmayo/Qwen2.5-0.5B-Unfettered
+ollama run hf.co/josephmayo/Qwen2.5-0.5B-Unfettered
 ollama run llama3.2:1b
 
 ```
@@ -60,7 +60,7 @@ También es posible integrarlo en combinacion con Claude Code como front-end, co
 
 | Modelo | Peso | RAM | Comando en Ollama |
 |---|---|---|---|
-| Qwen2.5-0.5B-Unfettered | 1 GB | 1 GB | `ollama run josephmayo/Qwen2.5-0.5B-Unfettered` |
+| Qwen2.5-0.5B-Unfettered | 1 GB | 1 GB | `ollama run hf.co/josephmayo/Qwen2.5-0.5B-Unfettered` |
 | Gemma 3 Mini | 1 GB | 4 GB | `ollama run gemma3:1b` |
 | DeepSeek-R1:1.5B | 1.1 GB | 2 GB+ | `ollama run deepseek-r1:1.5b` |
 | Llama 3.2 | 1.3 GB | 4 GB+ | `ollama run llama3.2:1b` |
