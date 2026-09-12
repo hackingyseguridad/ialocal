@@ -50,7 +50,7 @@ chmod +x *.sh
 
 ### Instalación completa (`instalar.sh`)
 
-Instala todo el stack: Ollama, ajustes de fecha/hora y actualización del sistema, Claude Code, Codex CLI, OpenCode, y descarga los diccionarios de `ficheros.txt` / `ficheros2.txt` usados en otras herramientas de hackingyseguridad.
+Instala todo el stack: Ollama, ajustes de fecha/hora y actualización del sistema, Claude Code, Codex CLI, OpenCode.
 
 ```bash
 sudo sh instalar.sh
@@ -60,16 +60,16 @@ sudo sh instalar.sh
 El script `ollama.sh` documenta cómo lanzar un modelo local **sin GPU**, usando solo CPU, integrado con distintos front-ends de agente:
 
 ```bash
-# Ejemplo: lanzar deepseek-r1:1.5b con OpenCode
-ollama launch opencode --model deepseek-r1:1.5b
+# Ejemplo: lanzar deepseek-r1:1.5b con Ollama
+ollama run deepseek-r1:1.5b
 
-# Otras variantes orientadas a seguridad ofensiva
-ollama launch opencode --model monotykamary/whiterabbitneo-v1.5a
-ollama launch opencode --model captainkyd/whiterabbitneo7b
-ollama launch opencode --model lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B
+# Otros modelos offline, en local
+ollama run monotykamary/whiterabbitneo-v1.5a
+ollama run captainkyd/whiterabbitneo7b
+ollama run lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B
 ```
 
-También es posible integrarlo con Claude Code como front-end en lugar de OpenCode, sustituyendo `opencode` por `claude` en el mismo patrón de comando.
+También es posible integrarlo en combinacion con Claude Code como front-end, con OpenCode, Codex, con en mismo patrón de comando.
 
 ###  Modelos recomendados
 
