@@ -7,6 +7,9 @@ Comandos:
 # de Ollama, en modo chat interactivo por terminal.
 # ----------------------------------------------------------------------------
 
+# -- gpt-oss:20b
+ollama run gpt-oss:20b
+
 # -- gemma3:1b
 ollama pull gemma3:1b
 ollama run gemma3:1b
