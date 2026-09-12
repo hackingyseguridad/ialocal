@@ -1,0 +1,162 @@
+#!/bin/sh
+# IA en Local sin GPU offline !
+# @antonio_taboada - hackingyseguridad.com - 2026
+
+echo " "
+echo "IA en Local sin GPU !"
+echo "Ejecuta MODELOS de Ollama en LOCAL offline, solos, combinados con Claude Code, OpenCode, Codex y Harness"
+echo " "
+echo "Pentesting con IA local: sin mandar datos fuera. Ollama + modelos abiertos + Kali/OpenCode, viendo qué se puede hacer realmente offline y qué se pierde frente a modelos potentes en la nube. Para un entorno corporativo, el debate de privacidad puede dar muchísimo juego."
+echo
+
+##############################################################################
+# 1) OLLAMA EN LOCAL - DIRECTAMENTE (sin agente encima)
+##############################################################################
+# Descarga (pull) y ejecuta (run) cada modelo directamente contra el runtime
+# de Ollama, en modo chat interactivo por terminal.
+# ----------------------------------------------------------------------------
+
+# -- gemma3:1b
+ollama pull gemma3:1b
+ollama run gemma3:1b
+
+# -- deepseek-r1:1.5b
+ollama pull deepseek-r1:1.5b
+ollama run deepseek-r1:1.5b
+
+# -- llama3.2:1b
+ollama pull llama3.2:1b
+ollama run llama3.2:1b
+
+# -- Qwen2.5-0.5B-Unfettered (modelo GGUF publicado en HuggingFace Hub)
+ollama pull hf.co/josephmayo/Qwen2.5-0.5B-Unfettered
+ollama run hf.co/josephmayo/Qwen2.5-0.5B-Unfettered
+
+# -- qwen2.5-coder:1.5b
+ollama pull qwen2.5-coder:1.5b
+ollama run qwen2.5-coder:1.5b
+
+# -- phi3.5:3.8b
+ollama pull phi3.5:3.8b
+ollama run phi3.5:3.8b
+
+
+##############################################################################
+# 2) OLLAMA + CLAUDE CODE
+##############################################################################
+# Claude Code habla el protocolo de la API de Anthropic. Para apuntarlo a un
+# modelo servido por Ollama hace falta un proxy/router que traduzca esa API
+# a la API local de Ollama (p.ej. "claude-code-router"). Instálalo una vez:
+#
+#   npm install -g @musistudio/claude-code-router
+#
+# Luego se arranca el router indicando el modelo de Ollama y se lanza
+# Claude Code apuntando a ese proxy local.
+# ----------------------------------------------------------------------------
+
+export ANTHROPIC_BASE_URL="http://localhost:8787"   # URL del proxy/router local
+export ANTHROPIC_API_KEY="ollama-local"              # valor cualquiera, no se valida
+
+# -- qwen2.5-coder:7b
+ollama pull qwen2.5-coder:7b
+ccr start --model qwen2.5-coder:7b &     # arranca el router con ese modelo
+claude
+
+# -- qwen2.5-coder:14b
+ollama pull qwen2.5-coder:14b
+ccr start --model qwen2.5-coder:14b &
+claude
+
+# -- qwen2.5-coder:32b
+ollama pull qwen2.5-coder:32b
+ccr start --model qwen2.5-coder:32b &
+claude
+
+# -- deepseek-coder-v2:16b
+ollama pull deepseek-coder-v2:16b
+ccr start --model deepseek-coder-v2:16b &
+claude
+
+# -- codellama:13b
+ollama pull codellama:13b
+ccr start --model codellama:13b &
+claude
+
+# -- codellama:34b
+ollama pull codellama:34b
+ccr start --model codellama:34b &
+claude
+
+
+##############################################################################
+# 3) OLLAMA + OPENCODE
+##############################################################################
+# OpenCode soporta de forma nativa proveedores "OpenAI-compatible", así que
+# basta con apuntar su configuración al endpoint local de Ollama (puerto
+# 11434). Config de ejemplo en ~/.config/opencode/config.json:
+#
+# {
+#   "provider": {
+#     "ollama": {
+#       "npm": "@ai-sdk/openai-compatible",
+#       "options": { "baseURL": "http://localhost:11434/v1" }
+#     }
+#   }
+# }
+# ----------------------------------------------------------------------------
+
+# -- qwen2.5-coder
+ollama pull qwen2.5-coder
+opencode --model ollama/qwen2.5-coder
+
+# -- deepseek-r1
+ollama pull deepseek-r1
+opencode --model ollama/deepseek-r1
+
+# -- llama3.1:8b
+ollama pull llama3.1:8b
+opencode --model ollama/llama3.1:8b
+
+
+##############################################################################
+# 4) OLLAMA + CODEX CLI
+##############################################################################
+# Codex CLI (OpenAI) permite definir "model_providers" personalizados en
+# ~/.codex/config.toml apuntando al endpoint compatible de Ollama:
+#
+# [model_providers.ollama]
+# name = "Ollama local"
+# base_url = "http://localhost:11434/v1"
+# wire_api = "chat"
+# ----------------------------------------------------------------------------
+
+# -- qwen2.5-coder:32b
+ollama pull qwen2.5-coder:32b
+codex --model_provider ollama --model qwen2.5-coder:32b
+
+# -- deepseek-coder-v2
+ollama pull deepseek-coder-v2
+codex --model_provider ollama --model deepseek-coder-v2
+
+
+##############################################################################
+# 5) OLLAMA + HARNESS (con DeepSeek)
+##############################################################################
+# "Harness" se trata aquí como un agent-harness genérico que orquesta
+# llamadas a un modelo vía API OpenAI-compatible. Ajusta el binario/subcomando
+# real ("harness run", "harness agent", etc.) al harness concreto que uses.
+# ----------------------------------------------------------------------------
+
+ollama pull deepseek-r1:1.5b
+
+export HARNESS_MODEL_PROVIDER="openai-compatible"
+export HARNESS_BASE_URL="http://localhost:11434/v1"
+export HARNESS_MODEL="deepseek-r1:1.5b"
+
+harness run --provider "$HARNESS_MODEL_PROVIDER" \
+            --base-url "$HARNESS_BASE_URL" \
+            --model "$HARNESS_MODEL"
+
+echo " "
+echo "Listo. Todos los modelos de la tabla quedan disponibles offline,"
+echo "usados solos o combinados con Claude Code, OpenCode, Codex y Harness."
