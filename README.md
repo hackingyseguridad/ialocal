@@ -129,10 +129,6 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 
 **El uso no autorizado de estas herramientas contra sistemas de terceros es ilegal** y puede constituir un delito conforme al Código Penal español, al RGPD, a la Directiva NIS y a normativas equivalentes en otros países (ver detalle completo en [`LICENSE`](./LICENSE)).
 
-### Licencia
-
-Licencia MIT (español/inglés) ampliada con cláusulas de seguridad específicas para herramientas de pruebas de penetración. Consulta el archivo [`LICENSE`](./LICENSE) para el texto completo.
-
 ###  Autor
 
 [hackingyseguridad.com](http://www.hackingyseguridad.com/)
