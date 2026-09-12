@@ -6,8 +6,6 @@
   Scripts de instalación y arranque rápido para usar asistentes de IA (Ollama, Qwen, Claude Code, OpenCode) como apoyo en tareas de hacking ético y pentesting, sin enviar datos a la nube.
 </p>
 
-[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ialocal/raw/main/ialocal.png)](https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png)
-
 <p align="center">
   <a href="http://www.hackingyseguridad.com/">hackingyseguridad.com</a> ·
   <a href="./LICENSE">Licencia MIT + cláusulas de seguridad</a> ·
@@ -31,6 +29,15 @@ Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o 
 - Ingragacion: Herramientas intermedias como Claude Code, OpenCode, Codex, Hermess, tienen una intergracion alta en el sistema operativo sobre el que corren.
 usan las interfaces de red, LAN o WAN, ejecutan comandos y programas, uso de scripts, uso de discos y memroria para leer y guardar ficheros.
 Ollama por si solo, carece de esa integración, necesitaria un Script que haga de puente con el sistema 
+
+---
+
+### Arquitectura 
+
+
+[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ialocal/raw/main/ialocal.png)](https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png)
+
+---
 
 ### Instalación
 
