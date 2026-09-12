@@ -33,5 +33,5 @@ export LANG=es_US.UTF-8
 export LC_ALL=es_ES.UTF-8
 sleep 3
 
-# CLaude Code impulsado por Gemma3 offline!!!
-ollama launch claude --model gemma3:1b
+# CLaude Code impulsado por deepseek-r1:1.5b offline!!!
+ollama launch claude --model deepseek-r1:1.5b
