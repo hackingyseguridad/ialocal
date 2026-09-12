@@ -55,35 +55,7 @@ Instala todo el stack: Ollama, ajustes de fecha/hora y actualización del sistem
 ```bash
 sudo sh instalar.sh
 ```
-
-Al finalizar, el script indica los siguientes pasos manuales:
-
-1. Ejecuta `~/.local/bin/claude` para lanzar Claude Code.
-2. Elige la opción **2. Anthropic Console account · API usage billing**.
-3. Abre el enlace de autorización OAuth que muestra la terminal, autoriza el acceso y pega el código en la consola.
-4. Repite un proceso equivalente de autenticación para Ollama si tu flujo lo requiere.
-
->  El script modifica la zona horaria del sistema a `Europe/Madrid` y sincroniza la hora vía NTP (`timedatectl`, `ntpdate`). Revisa esas líneas si tu servidor necesita otra zona horaria.
-
-### Solo Ollama (`instalarollama.sh`)
-
-Si únicamente quieres el motor de modelos locales, sin el resto del stack:
-
-```bash
-sudo sh instalarollama.sh
-```
-
-Comprueba si Ollama ya está instalado y, si no lo está, lo instala con el script oficial (`ollama.com/install.sh`) e intenta arrancar el servicio con `systemctl`.
-
-### Solo Qwen Code (`instalarqwen.sh`)
-
-Instala la CLI de Qwen Code de forma independiente:
-
-```bash
-sh instalarqwen.sh
-```
-
-### Uso: ejecutar modelos en local
+### OLLAMA modelos offline, en local
 
 El script `ollama.sh` documenta cómo lanzar un modelo local **sin GPU**, usando solo CPU, integrado con distintos front-ends de agente:
 
