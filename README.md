@@ -5,13 +5,6 @@
   Scripts de instalación y arranque rápido para usar asistentes de IA (Ollama, Qwen, Claude Code, OpenCode) como apoyo en tareas de hacking ético y pentesting, sin enviar datos a la nube.
 </p>
 
-<p align="center">
-  <a href="http://www.hackingyseguridad.com/">hackingyseguridad.com</a> ·
-  <a href="./LICENSE">Licencia MIT + cláusulas de seguridad</a> ·
-  <a href="./DISCLAMER.md">Descargo de responsabilidad</a> ·
-  <a href="./CODIGODECONDUCTA.md">Código de conducta</a>
-</p>
-
 ---
 
 ###  IA en local,
@@ -102,8 +95,10 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 
 ###  Autor
 
-[hackingyseguridad.com](http://www.hackingyseguridad.com/)
-
+<p align="center">
+  <a href="http://www.hackingyseguridad.com/">hackingyseguridad.com</a> ·
+  <a href="./LICENSE">Licencia MIT + cláusulas de seguridad</a> ·
+  <a href="./DISCLAMER.md">Descargo de responsabilidad</a> ·
+  <a href="./CODIGODECONDUCTA.md">Código de conducta</a>
+</p>
 ---
-
-<p align="center"><i>Solo para uso legal, ético y autorizado.</i></p>
