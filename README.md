@@ -18,12 +18,12 @@
 
 **ialocal** es una colección de scripts en lenguaje, bash shell linux, python3 para **Linux/Debian/Kali** que automatizan la instalación de las herramientas necesarias para tener un asistente de IA funcionando **100% en local**, con privacidad , sin depender de servicios en la nube, y usarlo como herramienta para pruebas de deteción de vulnerabilides, pruebas de concepto y explotación , en auditorías de seguridad y pruebas de penetración autorizadas, hacking.
 
-Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en la nube puede ser un problema de **confidencialidad** y de cumplimiento contractual. Ejecutando el modelo en local con Ollama:
+Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en la nube puede ser un problema de **confidencialidad** y privacidad: - Usando IA local: 
 
-- Ningún dato sale de la máquina, PC donde corre la IA en local, pues esta aislado. 
-- Puedes trabajar en redes aisladas / air-gapped.
-- No hay coste recurrente de API., consumo de Tokens, suelen ser modelos OpenSource
-- El rendimiento depende solo de tu hardware (funciona incluso **sin GPU**, usando modelos pequeños en CPU). Los requerimientos para ejectuar en un PC en Local, modelos de IA, son altos: se requiere GPU/CPU,  memoria RAM y velocidad de proceso.
+- Privacidad, ningún dato saldria de la máquina, PC donde corre la IA en local pues esta aislado, sin salida a intenret. 
+- Puedes trabajar en redes locales LAN aisladas / air-gapped.
+- No habria coste recurrente de API., consumo de Tokens, suelen ser modelos OpenSource.
+- El rendimiento depende solo del hardware en local (funciona incluso **sin GPU**, usando modelos pequeños en CPU). Los requerimientos para ejectuar en un PC en Local, modelos de IA, son altos: se requiere GPU/CPU,  memoria RAM y velocidad de proceso.
 - Menores habilidades, quiza algunos de estos modelos en local + herramientas, son menos pesados, menor tamaño o mas antiguos y tenga menos habilidades analiticas en la detección de vulnerabilidades, POC o Exploit, comparado con los ultimos  modelos enromes online, en centros de procesos de datos la nube.
 - Ingragacion: Herramientas intermedias como Claude Code, OpenCode, Codex, Hermess, tienen una intergracion alta en el sistema operativo sobre el que corren.
 usan las interfaces de red, LAN o WAN, ejecutan comandos y programas, uso de scripts, uso de discos y memroria para leer y guardar ficheros.
