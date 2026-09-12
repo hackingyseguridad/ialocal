@@ -87,12 +87,52 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 
 **El uso no autorizado de estas herramientas contra sistemas de terceros es ilegal** y puede constituir un delito conforme al Código Penal español, al RGPD, a la Directiva NIS y a normativas equivalentes en otros países (ver detalle completo en [`LICENSE`](./LICENSE)).
 
-###  Autor
+---
+
+### Referencias
+
+| Recurso | Enlace |
+|---|---|
+| Anthropic knowledge-work-plugins | <https://github.com/anthropics/knowledge-work-plugins> |
+| Claude Security (beta pública) | <https://claude.com/product/claude-security#public-beta> |
+| DeepSeek API Key | <https://platform.deepseek.com/api_keys>  |
+| Codex DeepSeek | <https://api-docs.deepseek.com/quick_start/agent_integrations/codex/> |
+| DeepSeek Code Harness | <https://github.com/deepseek-ai/deepseek-harness> |
+| DeepSeek-Coder (repositorio) | <https://github.com/deepseek-ai/DeepSeek-Coder/> |
+| Gemini-Cli en Kali Linux | <https://www.kali.org/tools/gemini-cli/> |
+| Integración Ollama + Claude Code | <https://docs.ollama.com/integrations/claude-code#recommended-models> |
+| KIMI K3 | <https://www.kimi.com/es-419/help/kimi-code/cli-getting-started/> |
+| Offensive-Claude | <https://github.com/hypnguyen1209/offensive-claude> |
+| Ollama | <https://ollama.com/> |
+| Codex Cli GPT de OpenIA | <https://github.com/openai/codex/> |
+| OpenAI Codex CLI (documentación oficial) | <https://developers.openai.com/codex/cli> |
+| OpenClaw — guía de inicio | <https://docs.openclaw.ai/start/getting-started> |
+| OpenCode | <https://opencode.ai/> |
+| Pentest-Copilot | <https://github.com/bugbasesecurity/pentest-copilot> |
+| QWEN Code | <https://qwen.ai/qwencode> |
+| Repositorio OpenAI Codex (Apache-2.0, Rust) | <https://github.com/openai/codex> |
+| tGPT | <https://github.com/aandrew-me/tgpt> |
+| Enlace adicional | <http://goo.gl/ID8XBX> |
+
+#
+
+# 
 
 <p align="center">
-  <a href="http://www.hackingyseguridad.com/">hackingyseguridad.com</a> ·
-  <a href="./LICENSE">Licencia MIT + cláusulas de seguridad</a> ·
-  <a href="./DISCLAMER.md">Descargo de responsabilidad</a> ·
-  <a href="./CODIGODECONDUCTA.md">Código de conducta</a>
+  <img src="https://github.com/hackingyseguridad/ialocal/blob/main/autor.png" alt="@antonio_taboada">
 </p>
----
+
+#
+
+<p align="center">
+  <a href="https://www.hackingyseguridad.com/">https://www.hackingyseguridad.com/</a>
+</p>
+
+
+
+
+
+
+
+
+
