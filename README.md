@@ -20,7 +20,7 @@
 
 Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en la nube puede ser un problema de **confidencialidad** y privacidad: - Usando IA local: 
 
-- Privacidad, ningún dato saldria de la máquina, PC donde corre la IA en local pues esta aislado, sin salida a intenret. 
+- Privacidad, ningún dato saldria de la máquina, PC donde se ejecuta la IA en local pues esta aislado, sin salida a intenret. 
 - Puedes trabajar en redes locales LAN aisladas / air-gapped.
 - No habria coste recurrente de API., consumo de Tokens, suelen ser modelos OpenSource.
 - El rendimiento depende solo del hardware en local (funciona incluso **sin GPU**, usando modelos pequeños en CPU). Los requerimientos para ejectuar en un PC en Local, modelos de IA, son altos: se requiere GPU/CPU,  memoria RAM y velocidad de proceso.
