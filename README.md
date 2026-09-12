@@ -14,7 +14,7 @@ usan las interfaces de red, LAN o WAN, ejecutan comandos y programas, uso de scr
 Ollama por si solo, carece de esa integración, necesitaria un Script que haga de puente con el sistema .
 - Importancia del Agente; El modelo de IA, por sí solo, hace relativamente poco. La clave está en el Agente o herramienta intermedia  que lo conecta con el modelo del  entorno y le permite actuar:  Claude Code, Codex, OpenCode, Harness, .. 
 
-| Agente (Herramienta)      | Modelo Offline OpenSource                                                                 | Notas |
+| Agente (Herramienta)      | Modelo IA Offline OpenSource                                                                 | Notas |
 |---------------------------|--------------------------------------------------------------------------------------------|-------|
 | **OLLAMA**                | `gemma3:1b`, `deepseek-r1:1.5b`, `llama3.2:1b`, `hf.co/josephmayo/Qwen2.5-0.5B-Unfettered`, `qwen2.5-coder:1.5b`, `phi3.5:3.8b` | Runtime base para servir modelos locales vía API compatible (`localhost:11434`). |
 | **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`                    | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. |
