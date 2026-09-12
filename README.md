@@ -57,15 +57,15 @@ También es posible integrarlo en combinacion con Claude Code como front-end, co
 
 ###  Modelos recomendados
 
-| Modelo | Peso | RAM | Comando en Ollama | Compatible con Claude | Soporta SKILL.md |
-|---|---|---|---|---|---|
-| Qwen2.5-0.5B-Unfettered | 1 GB | 1 GB | `ollama run josephmayo/Qwen2.5-0.5B-Unfettered` | No | No |
-| Gemma 3 Mini | 1 GB | 4 GB | `ollama run gemma3:1b` | No | No |
-| DeepSeek-R1:1.5B | 1.1 GB | 2 GB+ | `ollama run deepseek-r1:1.5b` | No | No |
-| Llama 3.2 | 1.3 GB | 4 GB+ | `ollama run llama3.2:1b` | No | No |
-| Cygnis Alpha | 1.5 GB | 1.5 GB | `ollama run CygnisAI/Cygnis-Alpha-1.7B-v0.1` | No | No |
-| WhiteRabbitNeo 7B | 4.5 GB | 8 GB+ | `ollama run WhiteRabbitNeo/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` | No | No |
-| WhiteRabbitNeo 7B (lazarevtill) | 15 GB | 16 GB+ | `ollama run lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` | No | No |
+| Modelo | Peso | RAM | Comando en Ollama |
+|---|---|---|---|
+| Qwen2.5-0.5B-Unfettered | 1 GB | 1 GB | `ollama run josephmayo/Qwen2.5-0.5B-Unfettered` |
+| Gemma 3 Mini | 1 GB | 4 GB | `ollama run gemma3:1b` |
+| DeepSeek-R1:1.5B | 1.1 GB | 2 GB+ | `ollama run deepseek-r1:1.5b` |
+| Llama 3.2 | 1.3 GB | 4 GB+ | `ollama run llama3.2:1b` |
+| Cygnis Alpha | 1.5 GB | 1.5 GB | `ollama run CygnisAI/Cygnis-Alpha-1.7B-v0.1` |
+| WhiteRabbitNeo 7B | 4.5 GB | 8 GB+ | `ollama run WhiteRabbitNeo/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` |
+| WhiteRabbitNeo 7B (lazarevtill) | 15 GB | 16 GB+ | `ollama run lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` |
 
 ### Flujo de trabajo típico
 
