@@ -48,9 +48,10 @@ El script `ollama.sh` documenta cómo lanzar un modelo local **sin GPU**, usando
 ollama run deepseek-r1:1.5b
 
 # Otros modelos offline, en local
-ollama run monotykamary/whiterabbitneo-v1.5a
-ollama run captainkyd/whiterabbitneo7b
-ollama run lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B
+ollama run gemma3:1b
+ollama run josephmayo/Qwen2.5-0.5B-Unfettered
+ollama run llama3.2:1b
+
 ```
 
 También es posible integrarlo en combinacion con Claude Code como front-end, con OpenCode, Codex, con en mismo patrón de comando.
