@@ -12,7 +12,7 @@ Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o 
 - Ingragacion: Herramientas intermedias, Agentes como: Claude Code, OpenCode, Codex, Hermess, tienen una intergracion alta en el sistema operativo sobre el que corren.
 usan las interfaces de red, LAN o WAN, ejecutan comandos y programas, uso de scripts, uso de discos y memroria para leer y guardar ficheros.
 Ollama por si solo, carece de esa integración, necesitaria un Script que haga de puente con el sistema .
-- Importancia del Agente; El modelo de IA, por sí solo, hace relativamente poco. La clave está en el Agente o herramienta intermedia  que lo conecta con el modelo del  entorno y le permite actuar:  Claude Code, Codex, OpenCode, Harness, .. 
+- Importancia del Agente; El modelo de IA, por sí solo, hace relativamente poco. **La clave está en el Agente o herramienta intermedia**  que lo conecta con el modelo del  entorno y le permite actuar:  Claude Code, Codex, OpenCode, Harness, ..  y/o combinaciones de OLLAMA + Agente + Modelo local offline:
 
 | Agente (Herramienta)      | Modelo IA Offline OpenSource                                                                 | Notas |
 |---------------------------|--------------------------------------------------------------------------------------------|-------|
