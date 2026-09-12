@@ -126,11 +126,11 @@ opencode --model ollama/llama3.1:8b
 
 # -- qwen2.5-coder:32b
 ollama pull qwen2.5-coder:32b
-codex --model_provider ollama --model qwen2.5-coder:32b
+codex --oss --local-provider ollama --model qwen2.5-coder:32b
 
 # -- deepseek-coder-v2
 ollama pull deepseek-coder-v2
-codex --model_provider ollama --model deepseek-coder-v2
+codex --oss --local-provider ollama --model deepseek-coder-v2
 
 
 ##############################################################################
