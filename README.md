@@ -17,8 +17,8 @@ Ollama por si solo, carece de esa integración, necesitaria un Script que haga d
 | Agente (Herramienta)      | Modelo IA local Offline OpenSource                                                                 | Notas |
 |---------------------------|--------------------------------------------------------------------------------------------|-------|
 | **OLLAMA**                | `gemma3:1b`, `deepseek-r1:1.5b`, `llama3.2:1b`, `hf.co/josephmayo/Qwen2.5-0.5B-Unfettered`, `qwen2.5-coder:1.5b`, `phi3.5:3.8b` | Runtime base para servir modelos locales vía API compatible (`localhost:11434`). |
-| **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`                    | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. |
 | **OLLAMA + OpenCode**     | `qwen2.5-coder`, `deepseek-r1`, `llama3.1:8b`                                               | OpenCode soporta backends OpenAI-compatible de forma nativa; apuntar `base_url` a OLLAMA. |
+| **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`                    | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. |
 | **OLLAMA + Codex CLI**    | `qwen2.5-coder:32b`, `deepseek-coder-v2`                                                    | Codex CLI (OpenAI) admite endpoints compatibles vía configuración de `provider`/`base_url` personalizada. |
 | **OLLAMA + Harness**      | *(`deepseek-coder-v2`)*                                                             |  "agent harness" propio o de terceros, especifica cuál para documentar la integración exacta. |
 
