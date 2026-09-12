@@ -19,20 +19,6 @@
 
 ###  Índice
 
-- [¿Qué es ialocal?](#-qué-es-ialocal)
-- [¿Por qué IA local?](#-por-qué-ia-local)
-- [Contenido del repositorio](#-contenido-del-repositorio)
-- [Requisitos](#-requisitos)
-- [Instalación](#-instalación)
-  - [Instalación completa](#instalación-completa-instalarsh)
-  - [Solo Ollama](#solo-ollama-instalarollamash)
-  - [Solo Qwen Code](#solo-qwen-code-instalarqwensh)
-- [Uso: ejecutar modelos en local](#-uso-ejecutar-modelos-en-local)
-- [Modelos recomendados](#-modelos-recomendados)
-- [Flujo de trabajo típico](#-flujo-de-trabajo-típico)
-- [Aviso legal y ético](#-aviso-legal-y-ético)
-- [Licencia](#-licencia)
-- [Autor](#-autor)
 
 ---
 
@@ -55,29 +41,10 @@ Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o 
 - Puedes trabajar en redes aisladas / air-gapped.
 - No hay coste recurrente de API., consumo de Tokens, suelen ser modelos OpenSource
 - El rendimiento depende solo de tu hardware (funciona incluso **sin GPU**, usando modelos pequeños en CPU). Los requerimientos para ejectuar en un PC en Local, modelos de IA, son altos: se requiere GPU/CPU,  memoria RAM y velocidad de proceso.
-- Menores habilidades, quiza algunos de estos modelos en local + herramientas, son menos pesados, menor tamaño o mas antiguos y tenga menos habilidades analiticas en la detección de vulnerabilidades, POC o Exploit, comparado con los ultimos  modelos enromes online, en centros de procesos de datos la nube
-
-
-### Contenido del repositorio
-
-| Archivo | Descripción |
-|---|---|
-| `instalar.sh` | Script principal. Instala Ollama, actualiza el sistema, ajusta la zona horaria, instala Claude Code, Codex CLI y OpenCode, y descarga diccionarios de `hackingyseguridad/diccionarios`. |
-| `instalarollama.sh` | Instalación mínima: solo Ollama (y arranque del servicio si existe `systemctl`). |
-| `instalarqwen.sh` | Instala **Qwen Code** de forma independiente. |
-| `ollama.sh` | Script de referencia/documentación con ejemplos de comandos para lanzar modelos locales (p. ej. `deepseek-r1:1.5b`) sin GPU, integrados con OpenCode o Claude. |
-| `DISCLAMER.md` | Descargo de responsabilidad sobre uso legal y ético de las herramientas. |
-| `CODIGODECONDUCTA.md` | Código de conducta para colaboradores y usuarios. |
-| `LICENSE` | Licencia MIT (ES/EN) ampliada con cláusulas de seguridad y referencias legales (España, UE, CFAA, Computer Misuse Act, etc.). |
-| `ialocal.png`, `banner0.png`, `banner2.png` | Recursos gráficos del proyecto. |
-
-###  Requisitos
-
-- Distribución basada en **Debian/Ubuntu/Kali Linux** (los scripts usan `apt-get`/`apt`).
-- Acceso a `sudo` / usuario `root`.
-- Conexión a Internet **solo durante la instalación** (para descargar Ollama, los modelos y las CLIs). Una vez instalado, el uso del modelo es offline.
-- Espacio en disco suficiente para los modelos (varían entre ~1 GB y varios GB según el modelo elegido).
-- Opcional: GPU compatible para acelerar la inferencia (los scripts también funcionan solo con CPU).
+- Menores habilidades, quiza algunos de estos modelos en local + herramientas, son menos pesados, menor tamaño o mas antiguos y tenga menos habilidades analiticas en la detección de vulnerabilidades, POC o Exploit, comparado con los ultimos  modelos enromes online, en centros de procesos de datos la nube.
+- Ingragacion: Herramientas intermedias como Claude Code, OpenCode, Codex, Hermess, tienen una intergracion alta en el sistema operativo sobre el que corren.
+usan las interfaces de red, LAN o WAN, ejecutan comandos y programas, uso de scripts, uso de discos y memroria para leer y guardar ficheros.
+Ollama por si solo, carece de esa integración, necesitaria un Script que haga de puente con el sistema 
 
 ### Instalación
 
