@@ -69,7 +69,7 @@ ollama run llama3.2:1b
 
 También es posible integrarlo en combinacion con Claude Code como front-end, con OpenCode, Codex, con en mismo patrón de comando.
 
-###  Modelos recomendados
+###  Modelos en local offline Ollama recomendados
 
 | Modelo | Peso | RAM | Comando en Ollama |
 |---|---|---|---|
