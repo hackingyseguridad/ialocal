@@ -14,7 +14,7 @@ usan las interfaces de red, LAN o WAN, ejecutan comandos y programas, uso de scr
 Ollama por si solo, carece de esa integración, necesitaria un Script que haga de puente con el sistema .
 - Importancia del Agente; El modelo de IA, por sí solo, hace relativamente poco. **La clave está en el Agente o herramienta intermedia**  que lo conecta con el modelo del  entorno y le permite actuar:  Claude Code, Codex, OpenCode, Harness, ..  y/o combinaciones de OLLAMA + Agente + Modelo local offline. (Kali + Ollama + agente + pentesting).
 - Modelos pequeños antiguos, carecen de compatibilidad (Tool calling / Function calling) con las Herramientas intermedias/Agentes (ClaudeCode, OpenCode, Codex,.), para combinarse con OLLAMA en local, 
-darán muchos problemas.  Los modelos mas compatibles serian mas avanzados p.ej.: DeepSeek-Coder-V2, Qwen3-Coder 30B, GPT-OSS 20B, .. :
+darán muchos problemas.  Los modelos mas compatibles serian mas avanzados p.ej.: deepseek-coder-v2, Qwen3-Coder 30B  moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF, gpt-oss:20b, ... :
 
 | Agente (Herramienta)      | Modelo IA local Offline OpenSource                                                                 | Notas |
 |---------------------------|--------------------------------------------------------------------------------------------|-------|
