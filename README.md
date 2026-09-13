@@ -6,7 +6,7 @@ Modelos de IA en local, offline y aislados, sin conexión a Internet, scripts de
 
 <img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/minipc.png">
 
-Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en la nube puede ser un problema de **confidencialidad** y privacidad: - Usando IA local: 
+Cuando se trabaja con datos de clientes, resultados de escaneos, vulnerabilidades CVE, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en un centro de proceso de datos en la nube puede ser un problema de **confidencialidad** y privacidad: - **Usando IA local:** 
 
 - PC, con sistema operativo Kali Linux (debian) con maximas prestaciones posibles de rendimineto en la CPU/GPU, Disco duro y memria RAM; 
 - Privacidad; ningún dato saldria de la máquina, PC donde se ejecuta la IA en local pues esta aislado, sin salida a intenret. 
