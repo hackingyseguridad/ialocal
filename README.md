@@ -21,10 +21,10 @@ darán muchos problemas.  **Modelos recomendados por compatibilidad avanzada:** 
 | Agente (Herramienta)      | Modelo IA local Offline OpenSource (ejemplo) | Comando |
 |---------------------------|-----------------------------------------------|---------|
 | **OLLAMA**                | `deepseek-coder-v2:16b` | `ollama run deepseek-coder-v2:16b` |
-| **OLLAMA + OpenCode**     | `deepseek-coder-v2:16b` | `opencode --provider openai --base-url http://localhost:11434/v1 --model deepseek-coder-v2:16b` |
-| **OLLAMA + Claude Code**  | `deepseek-coder-v2:16b` | `ANTHROPIC_BASE_URL=http://localhost:8787 ANTHROPIC_MODEL=deepseek-coder-v2:16b claude` *(el proxy `claude-code-router` escucha en `:8787` y reenvía a `localhost:11434`)* |
-| **OLLAMA + Codex CLI**    | `deepseek-coder-v2:16b` | `codex --provider ollama --base-url http://localhost:11434/v1 --model deepseek-coder-v2:16b` |
-| **OLLAMA + Harness**      | `deepseek-coder-v2:16b` | `harness run --backend openai-compatible --endpoint http://localhost:11434/v1 --model deepseek-coder-v2:16b` |
+| **OLLAMA + OpenCode**     | `deepseek-coder-v2:16b` | `ollama launch opencode --model deepseek-coder-v2:16b` |
+| **OLLAMA + Claude Code**  | `deepseek-coder-v2:16b` | `ollama launch claude --model deepseek-coder-v2:16b `)* |
+| **OLLAMA + Codex CLI**    | `deepseek-coder-v2:16b` | `codex --oss --local-provider ollama --model deepseek-coder-v2` |
+| **OLLAMA + Harness**      | `deepseek-coder-v2:16b` | `harness run -model deepseek-coder-v2:16b` |
 
 ---
 
