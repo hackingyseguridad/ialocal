@@ -18,11 +18,11 @@ darán muchos problemas.  Los modelos mas compatibles serian mas avanzados p.ej.
 
 | Agente (Herramienta)      | Modelo IA local Offline OpenSource                                                                 | Notas |
 |---------------------------|--------------------------------------------------------------------------------------------|-------|
-| **OLLAMA**                | `gemma3:1b`, `deepseek-r1:1.5b`, `llama3.2:1b`, `hf.co/josephmayo/Qwen2.5-0.5B-Unfettered`, `qwen2.5-coder:1.5b`, `phi3.5:3.8b` | Runtime base para servir modelos locales vía API compatible (`localhost:11434`). |
-| **OLLAMA + OpenCode**     | `qwen2.5-coder`, `deepseek-r1`, `llama3.1:8b`                                               | OpenCode soporta backends OpenAI-compatible de forma nativa; apuntar `base_url` a OLLAMA. |
-| **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`                    | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. |
-| **OLLAMA + Codex CLI**    | `qwen2.5-coder:32b`, `deepseek-coder-v2`                                                    | Codex CLI (OpenAI) admite endpoints compatibles vía configuración de `provider`/`base_url` personalizada. |
-| **OLLAMA + Harness**      | *(`deepseek-coder-v2`)*                                                             |  "agent harness" propio o de terceros, especifica cuál para documentar la integración exacta. |
+| **OLLAMA**                | `gemma3:1b`, `deepseek-r1:1.5b`, `llama3.2:1b`, `hf.co/josephmayo/Qwen2.5-0.5B-Unfettered`, `qwen2.5-coder:1.5b`, `phi3.5:3.8b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b` | Runtime base para servir modelos locales vía API compatible (`localhost:11434`). Los dos últimos son MoE de mayor capacidad (30B/20B activos parciales), requieren más VRAM/RAM pero dan mejor rendimiento en tareas de código/razonamiento. |
+| **OLLAMA + OpenCode**     | `qwen2.5-coder`, `deepseek-r1`, `llama3.1:8b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b` | OpenCode soporta backends OpenAI-compatible de forma nativa; apuntar `base_url` a OLLAMA. Qwen3-Coder 30B y gpt-oss:20b son buenas opciones si hay hardware suficiente para agentic coding más exigente. |
+| **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF` | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. |
+| **OLLAMA + Codex CLI**    | `qwen2.5-coder:32b`, `deepseek-coder-v2`, `gpt-oss:20b`                                     | Codex CLI (OpenAI) admite endpoints compatibles vía configuración de `provider`/`base_url` personalizada. `gpt-oss:20b` encaja bien aquí por ser un modelo estilo OpenAI open-weight. |
+| **OLLAMA + Harness**      | *(`deepseek-coder-v2`)*                                                                     | "agent harness" propio o de terceros, especifica cuál para documentar la integración exacta. |
 
 ---
 
