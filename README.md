@@ -162,7 +162,7 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 #
 
 <p align="center">
-  <a href="https://www.hackingyseguridad.com/">https://www.hackingyseguridad.com/</a>
+  <a href="http://www.hackingyseguridad.com/">https://www.hackingyseguridad.com/</a>
 </p>
 
 
