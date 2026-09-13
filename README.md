@@ -81,6 +81,9 @@ También es posible integrarlo en combinacion con Claude Code como front-end, co
 | Cygnis Alpha | 1.5 GB | 1.5 GB | `ollama run CygnisAI/Cygnis-Alpha-1.7B-v0.1` |
 | WhiteRabbitNeo 7B | 4.5 GB | 8 GB+ | `ollama run WhiteRabbitNeo/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` |
 | WhiteRabbitNeo 7B (lazarevtill) | 15 GB | 16 GB+ | `ollama run lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` |
+| DeepSeek-Coder-V2:16B | ~8.9 GB (Q4) | 16 GB+ | `ollama run deepseek-coder-v2:16b` |
+| GPT-OSS 20B | ~13 GB (MXFP4) | 16 GB+ | `ollama run gpt-oss:20b` |
+| Qwen3-Coder-30B-A3B-Instruct (GGUF) | ~18-19 GB (Q4_K_M)* | 32 GB+ | `ollama run hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M` |
 
 ### Flujo de trabajo típico
 
