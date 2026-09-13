@@ -18,14 +18,13 @@ darán muchos problemas.  **Modelos recomendados por compatibilidad avanzada:** 
 
 ### Ollama + Agente + Modelo local (Pentesting)
 
-| Agente (Herramienta)      | Modelo IA local Offline OpenSource                                                                 | Notas |
-|---------------------------|--------------------------------------------------------------------------------------------|-------|
-| **OLLAMA**                | `gemma3:1b`, `deepseek-r1:1.5b`, `llama3.2:1b`, `hf.co/josephmayo/Qwen2.5-0.5B-Unfettered`, `qwen2.5-coder:1.5b`, `phi3.5:3.8b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b` | Runtime base para servir modelos locales vía API compatible (`localhost:11434`). Ollama por sí solo NO tiene integración con el SO (red, comandos, ficheros); necesita un script/agente puente para actuar sobre el sistema. |
-| **OLLAMA + OpenCode**     | `qwen2.5-coder`, `deepseek-r1`, `llama3.1:8b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b` | OpenCode soporta backends OpenAI-compatible de forma nativa; apuntar `base_url` a OLLAMA. Requiere que el modelo soporte *tool calling* para ejecutar comandos/scripts reales. |
-| **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF` | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. Modelos sin *function calling* fiable fallan al invocar herramientas del agente. |
-| **OLLAMA + Codex CLI**    | `qwen2.5-coder:32b`, `deepseek-coder-v2`, `gpt-oss:20b`                                     | Codex CLI (OpenAI) admite endpoints compatibles vía configuración de `provider`/`base_url` personalizada. `gpt-oss:20b` es especialmente compatible por ser open-weight de OpenAI, entrenado ya con formato de *tool calling* nativo. |
-| **OLLAMA + Harness**      | `deepseek-coder-v2`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b`       | "agent harness" propio o de terceros; especifica cuál para documentar la integración exacta. La integración (red LAN/WAN, ejecución de comandos, lectura/escritura en disco) la aporta el harness, no el modelo. |
-
+| Agente (Herramienta)      | Modelo IA local Offline OpenSource (ejemplo) | Comando |
+|---------------------------|-----------------------------------------------|---------|
+| **OLLAMA**                | `deepseek-coder-v2:16b` | `ollama run deepseek-coder-v2:16b` |
+| **OLLAMA + OpenCode**     | `deepseek-coder-v2:16b` | `opencode --provider openai --base-url http://localhost:11434/v1 --model deepseek-coder-v2:16b` |
+| **OLLAMA + Claude Code**  | `deepseek-coder-v2:16b` | `ANTHROPIC_BASE_URL=http://localhost:8787 ANTHROPIC_MODEL=deepseek-coder-v2:16b claude` *(el proxy `claude-code-router` escucha en `:8787` y reenvía a `localhost:11434`)* |
+| **OLLAMA + Codex CLI**    | `deepseek-coder-v2:16b` | `codex --provider ollama --base-url http://localhost:11434/v1 --model deepseek-coder-v2:16b` |
+| **OLLAMA + Harness**      | `deepseek-coder-v2:16b` | `harness run --backend openai-compatible --endpoint http://localhost:11434/v1 --model deepseek-coder-v2:16b` |
 
 ---
 
