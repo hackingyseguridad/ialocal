@@ -9,7 +9,7 @@ Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o 
 - No habria coste recurrente de API., consumo de Tokens, suelen ser modelos OpenSource.
 - El rendimiento depende solo del hardware en local (funciona incluso **sin GPU**, usando modelos pequeños en CPU). Los requerimientos para ejectuar en un PC en Local, modelos de IA, son altos: se requiere GPU/CPU,  memoria RAM y velocidad de proceso.
 - Menores habilidades, quiza algunos de estos modelos en local + herramientas, son menos pesados, menor tamaño o mas antiguos y tenga menos habilidades analiticas en la detección de vulnerabilidades, POC o Exploit, comparado con los ultimos  modelos enromes online, en centros de procesos de datos la nube.
-- Ingragacion: Herramientas intermedias, Agentes como: Claude Code, OpenCode, Codex, Hermess, tienen una intergracion alta en el sistema operativo sobre el que corren.
+- Integragacion: Herramientas intermedias, Agentes como: Claude Code, OpenCode, Codex, Hermess, tienen una intergracion alta en el sistema operativo sobre el que corren.
 usan las interfaces de red, LAN o WAN, ejecutan comandos y programas, uso de scripts, uso de discos y memroria para leer y guardar ficheros.
 Ollama por si solo, carece de esa integración, necesitaria un Script que haga de puente con el sistema .
 - Importancia del Agente; El modelo de IA, por sí solo, hace relativamente poco. **La clave está en el Agente o herramienta intermedia**  que lo conecta con el modelo del  entorno y le permite actuar:  Claude Code, Codex, OpenCode, Harness, ..  y/o combinaciones de OLLAMA + Agente + Modelo local offline. (Kali + Ollama + agente + pentesting).
