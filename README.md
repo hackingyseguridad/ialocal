@@ -75,46 +75,36 @@ También es posible integrarlo en combinacion con Claude Code como front-end, co
 | Modelo | Peso | RAM | Comando en Ollama |
 |---|---|---|---|
 | Qwen2.5-0.5B-Unfettered | 1 GB | 1 GB | `ollama run hf.co/josephmayo/Qwen2.5-0.5B-Unfettered` |
-| Gemma 3 Mini | 1 GB | 4 GB | `ollama run gemma3:1b` |
-| DeepSeek-R1:1.5B | 1.1 GB | 2 GB+ | `ollama run deepseek-r1:1.5b` |
-| Llama 3.2 | 1.3 GB | 4 GB+ | `ollama run llama3.2:1b` |
 | Cygnis Alpha | 1.5 GB | 1.5 GB | `ollama run CygnisAI/Cygnis-Alpha-1.7B-v0.1` |
+| DeepSeek-R1:1.5B | 1.1 GB | 2 GB+ | `ollama run deepseek-r1:1.5b` |
+| Gemma 3 Mini | 1 GB | 4 GB | `ollama run gemma3:1b` |
+| Llama 3.2 | 1.3 GB | 4 GB+ | `ollama run llama3.2:1b` |
+| Granite3-dense / granite3.1-dense | 2-8 GB | 4-16 GB+ | `ollama run granite3.1-dense` |
+| Qwen3:4b | ~2.6 GB | 6 GB+ | `ollama run qwen3:4b` |
 | WhiteRabbitNeo 7B | 4.5 GB | 8 GB+ | `ollama run WhiteRabbitNeo/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` |
-| WhiteRabbitNeo 7B (lazarevtill) | 15 GB | 16 GB+ | `ollama run lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` |
+| Qwen3:8b | ~5.2 GB | 8 GB+ | `ollama run qwen3:8b` |
+| Qwen2.5-coder:7b | ~4.7 GB | 8 GB+ | `ollama run qwen2.5-coder:7b` |
+| Llama3-Groq-Tool-Use:8b | ~4.7 GB | 8 GB+ | `ollama run llama3-groq-tool-use:8b` |
+| Hermes3 (8b) | ~4.7 GB | 8 GB+ | `ollama run hermes3` |
+| Mistral-Nemo:12b | ~7 GB | 12 GB+ | `ollama run mistral-nemo` |
+| Qwen2.5-coder:14b | ~9 GB | 16 GB+ | `ollama run qwen2.5-coder:14b` |
+| Qwen3:14b | ~9 GB | 16 GB+ | `ollama run qwen3:14b` |
 | DeepSeek-Coder-V2:16B | ~8.9 GB (Q4) | 16 GB+ | `ollama run deepseek-coder-v2:16b` |
 | GPT-OSS 20B | ~13 GB (MXFP4) | 16 GB+ | `ollama run gpt-oss:20b` |
-| Qwen3-Coder-30B-A3B-Instruct (GGUF) | ~18-19 GB (Q4_K_M)* | 32 GB+ | `ollama run hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M` |
+| Mistral-Small | ~13 GB | 16 GB+ | `ollama run mistral-small` |
+| WhiteRabbitNeo 7B (lazarevtill) | 15 GB | 16 GB+ | `ollama run lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` |
+| Command-R | ~20 GB | 24 GB+ | `ollama run command-r` |
+| Qwen2.5-coder:32b | ~20 GB | 32 GB+ | `ollama run qwen2.5-coder:32b` |
+| Qwen3:32b | ~20 GB | 32 GB+ | `ollama run qwen3:32b` |
+| Mixtral 8x7B | ~26 GB | 32 GB+ | `ollama run mixtral` |
+| Qwen3-Coder-30B-A3B-Instruct (GGUF) | ~18-19 GB (Q4_K_M) | 32 GB+ | `ollama run hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M` |
+| Llama3-Groq-Tool-Use:70b | ~40 GB | 48 GB+ | `ollama run llama3-groq-tool-use:70b` |
+| Hermes3/Hermes4 (70b) | ~40 GB | 48 GB+ | `ollama run hermes3:70b` |
+| Athene-v2 | ~40 GB | 48 GB+ | `ollama run athene-v2` |
+| Firefunction-v2 | ~40 GB | 48 GB+ | `ollama run firefunction-v2` |
+| Llama3.3:70b | ~40 GB | 48 GB+ | `ollama run llama3.3` |
+| Command-R-Plus | ~59 GB | 64 GB+ | `ollama run command-r-plus` |
 
-
-### Todos los modelos offline
-
-| Modelo | Peso | RAM | Comando en Ollama | Tool Calling |
-|---|---|---|---|---|
-| Qwen2.5-0.5B-Unfettered | 1 GB | 1 GB | `ollama run hf.co/josephmayo/Qwen2.5-0.5B-Unfettered` | No confirmado |
-| Gemma 3 Mini | 1 GB | 4 GB | `ollama run gemma3:1b` | ❌ No soporta |
-| DeepSeek-R1:1.5B | 1.1 GB | 2 GB+ | `ollama run deepseek-r1:1.5b` | ⚠️ Solo el modelo completo (671B) trae plantilla de tools |
-| Llama 3.2 | 1.3 GB | 4 GB+ | `ollama run llama3.2:1b` | ✅ Sí (desde 3.1 en adelante) |
-| Cygnis Alpha | 1.5 GB | 1.5 GB | `ollama run CygnisAI/Cygnis-Alpha-1.7B-v0.1` | No confirmado |
-| WhiteRabbitNeo 7B | 4.5 GB | 8 GB+ | `ollama run WhiteRabbitNeo/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` | No confirmado |
-| WhiteRabbitNeo 7B (lazarevtill) | 15 GB | 16 GB+ | `ollama run lazarevtill/WhiteRabbitNeo-2.5-Qwen-2.5-Coder-7B` | No confirmado |
-| DeepSeek-Coder-V2:16B | ~8.9 GB (Q4) | 16 GB+ | `ollama run deepseek-coder-v2:16b` | ✅ Sí |
-| GPT-OSS 20B | ~13 GB (MXFP4) | 16 GB+ | `ollama run gpt-oss:20b` | ✅ Sí (nativo, formato tipo OpenAI) |
-| Qwen3-Coder-30B-A3B-Instruct (GGUF) | ~18-19 GB (Q4_K_M) | 32 GB+ | `ollama run hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M` | ✅ Sí — muy estable |
-| **Qwen3:4b** | ~2.6 GB | 6 GB+ | `ollama run qwen3:4b` | ✅ Sí — el más fiable en tamaño pequeño |
-| **Qwen3:8b** | ~5.2 GB | 8 GB+ | `ollama run qwen3:8b` | ✅ Sí — buen equilibrio tamaño/fiabilidad |
-| **Qwen3:14b / 32b** | ~9-20 GB | 16-32 GB+ | `ollama run qwen3:14b` / `qwen3:32b` | ✅ Sí — mejor precisión en multi-tool |
-| **Qwen2.5-coder:7b/14b/32b** | 4.7-20 GB | 8-32 GB+ | `ollama run qwen2.5-coder:14b` | ✅ Sí |
-| **Llama3.3:70b** | ~40 GB | 48 GB+ | `ollama run llama3.3` | ✅ Sí |
-| **Mistral-Nemo:12b** | ~7 GB | 12 GB+ | `ollama run mistral-nemo` | ✅ Sí |
-| **Mistral-Small** | ~13 GB | 16 GB+ | `ollama run mistral-small` | ✅ Sí |
-| **Mixtral 8x7B** | ~26 GB | 32 GB+ | `ollama run mixtral` | ✅ Sí |
-| **Command-R** | ~20 GB | 24 GB+ | `ollama run command-r` | ✅ Sí — bueno para RAG + multi-step |
-| **Command-R-Plus** | ~59 GB | 64 GB+ | `ollama run command-r-plus` | ✅ Sí |
-| **Hermes3 / Hermes4** | 4.7-40 GB (según tamaño) | 8-48 GB+ | `ollama run hermes3` | ✅ Sí — orientado a agentes |
-| **Llama3-Groq-Tool-Use:8b/70b** | 4.7-40 GB | 8-48 GB+ | `ollama run llama3-groq-tool-use:8b` | ✅ Sí — el más alto en benchmarks BFCL |
-| **Firefunction-v2** | ~40 GB | 48 GB+ | `ollama run firefunction-v2` | ✅ Sí — soporta llamadas paralelas |
-| **Granite3-dense / granite3.1-dense** | 2-8 GB | 4-16 GB+ | `ollama run granite3.1-dense` | ✅ Sí |
-| **Athene-v2** | ~40 GB | 48 GB+ | `ollama run athene-v2` | ✅ Sí |
 
 ### Flujo de trabajo típico
 
