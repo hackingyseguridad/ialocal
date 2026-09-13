@@ -18,7 +18,7 @@ darán muchos problemas.  **Modelos recomendados por compatibilidad avanzada:** 
 
 ### Ollama + Agente + Modelo local (Pentesting)
 
-| Agente (Herramienta)      | Modelo IA local Offline OpenSource (ejemplo) | Comando |
+| Agente (Herramienta)      | Modelo IA local Offline | Comando: Ollama + Agente + Modelo |
 |---------------------------|-----------------------------------------------|---------|
 | **OLLAMA**                | `deepseek-coder-v2:16b` | `ollama run deepseek-coder-v2:16b` |
 | **OLLAMA + OpenCode**     | `deepseek-coder-v2:16b` | `ollama launch opencode --model deepseek-coder-v2:16b` |
