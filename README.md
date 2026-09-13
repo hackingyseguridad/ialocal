@@ -16,13 +16,23 @@ Ollama por si solo, carece de esa integración, necesitaria un Script que haga d
 - Modelos pequeños antiguos, carecen de compatibilidad (Tool calling / Function calling) con las Herramientas intermedias/Agentes (ClaudeCode, OpenCode, Codex,.), para combinarse con OLLAMA en local, 
 darán muchos problemas.  Los modelos mas compatibles serian mas avanzados p.ej.: deepseek-coder-v2, Qwen3-Coder 30B  moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF, gpt-oss:20b, ... :
 
+## Ollama + Agente + Modelo local (Kali / Pentesting)
+
 | Agente (Herramienta)      | Modelo IA local Offline OpenSource                                                                 | Notas |
 |---------------------------|--------------------------------------------------------------------------------------------|-------|
-| **OLLAMA**                | `gemma3:1b`, `deepseek-r1:1.5b`, `llama3.2:1b`, `hf.co/josephmayo/Qwen2.5-0.5B-Unfettered`, `qwen2.5-coder:1.5b`, `phi3.5:3.8b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b` | Runtime base para servir modelos locales vía API compatible (`localhost:11434`). Los dos últimos son MoE de mayor capacidad (30B/20B activos parciales), requieren más VRAM/RAM pero dan mejor rendimiento en tareas de código/razonamiento. |
-| **OLLAMA + OpenCode**     | `qwen2.5-coder`, `deepseek-r1`, `llama3.1:8b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b` | OpenCode soporta backends OpenAI-compatible de forma nativa; apuntar `base_url` a OLLAMA. Qwen3-Coder 30B y gpt-oss:20b son buenas opciones si hay hardware suficiente para agentic coding más exigente. |
-| **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF` | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. |
-| **OLLAMA + Codex CLI**    | `qwen2.5-coder:32b`, `deepseek-coder-v2`, `gpt-oss:20b`                                     | Codex CLI (OpenAI) admite endpoints compatibles vía configuración de `provider`/`base_url` personalizada. `gpt-oss:20b` encaja bien aquí por ser un modelo estilo OpenAI open-weight. |
-| **OLLAMA + Harness**      | *(`deepseek-coder-v2`)*                                                                     | "agent harness" propio o de terceros, especifica cuál para documentar la integración exacta. |
+| **OLLAMA**                | `gemma3:1b`, `deepseek-r1:1.5b`, `llama3.2:1b`, `hf.co/josephmayo/Qwen2.5-0.5B-Unfettered`, `qwen2.5-coder:1.5b`, `phi3.5:3.8b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b` | Runtime base para servir modelos locales vía API compatible (`localhost:11434`). Ollama por sí solo NO tiene integración con el SO (red, comandos, ficheros); necesita un script/agente puente para actuar sobre el sistema. |
+| **OLLAMA + OpenCode**     | `qwen2.5-coder`, `deepseek-r1`, `llama3.1:8b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b` | OpenCode soporta backends OpenAI-compatible de forma nativa; apuntar `base_url` a OLLAMA. Requiere que el modelo soporte *tool calling* para ejecutar comandos/scripts reales. |
+| **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF` | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. Modelos sin *function calling* fiable fallan al invocar herramientas del agente. |
+| **OLLAMA + Codex CLI**    | `qwen2.5-coder:32b`, `deepseek-coder-v2`, `gpt-oss:20b`                                     | Codex CLI (OpenAI) admite endpoints compatibles vía configuración de `provider`/`base_url` personalizada. `gpt-oss:20b` es especialmente compatible por ser open-weight de OpenAI, entrenado ya con formato de *tool calling* nativo. |
+| **OLLAMA + Harness**      | `deepseek-coder-v2`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b`       | "agent harness" propio o de terceros; especifica cuál para documentar la integración exacta. La integración (red LAN/WAN, ejecución de comandos, lectura/escritura en disco) la aporta el harness, no el modelo. |
+
+### Notas clave sobre la arquitectura
+
+- **El agente es la pieza crítica, no el modelo.** El LLM solo genera texto/decisiones; es el agente (Claude Code, OpenCode, Codex CLI, Harness) quien tiene la integración real con el SO: acceso a red (LAN/WAN), ejecución de comandos y scripts, lectura/escritura en disco y memoria.
+- **Ollama en solitario carece de esa integración.** Para que un modelo servido por Ollama pueda "actuar" sobre el sistema (como en un flujo Kali + Ollama + agente + pentesting), hace falta un script puente o un agente que traduzca las respuestas del modelo en acciones del sistema.
+- **Tool calling / function calling es el filtro real de compatibilidad.** Modelos pequeños o antiguos (p. ej. `llama3.2:1b`, `gemma3:1b`, `phi3.5:3.8b`) suelen carecer de soporte fiable de *tool calling*, lo que provoca fallos al integrarse con agentes como Claude Code, OpenCode o Codex CLI vía Ollama.
+- **Modelos recomendados por compatibilidad avanzada:** `deepseek-coder-v2`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF` y `gpt-oss:20b` destacan por soportar *function calling* de forma más robusta, siendo mejores candidatos para combinarse con agentes en flujos de pentesting local (Kali + Ollama + agente).
+
 
 ---
 
