@@ -148,12 +148,10 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 | Ollama | <https://ollama.com/> |
 | Codex Cli GPT de OpenIA | <https://github.com/openai/codex/> |
 | OpenAI Codex CLI (documentación oficial) | <https://developers.openai.com/codex/cli> |
-| OpenClaw — guía de inicio | <https://docs.openclaw.ai/start/getting-started> |
 | OpenCode | <https://opencode.ai/> |
-| Pentest-Copilot | <https://github.com/bugbasesecurity/pentest-copilot> |
 | QWEN Code | <https://qwen.ai/qwencode> |
 | Repositorio OpenAI Codex (Apache-2.0, Rust) | <https://github.com/openai/codex> |
-| tGPT | <https://github.com/aandrew-me/tgpt> |
+| Kali Linux | <https://kali.org/get-kali/> |
 | Enlace adicional | <http://goo.gl/ID8XBX> |
 
 # 
