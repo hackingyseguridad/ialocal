@@ -151,22 +151,6 @@ echo "Requiere API Key de DeepSeek: https://platform.deepseek.com/sign_in"
 
 curl -fsSL https://raw.githubusercontent.com/peiyuwang54/deepseek-harness-cli/master/apps/cli/install/install.sh | sh
 
-# ------------------------------------------------------------------------
-# 8) DICCIONARIOS / WORDLISTS (extra)
-# ------------------------------------------------------------------------
-
-echo " "
-echo "== Descargando diccionarios =="
-
-wget https://raw.githubusercontent.com/hackingyseguridad/diccionarios/refs/heads/master/ficheros.txt -q -O diccionario.txt --inet4-only
-wc -l diccionario.txt
-
-echo ".."
-echo "..."
-
-wget https://raw.githubusercontent.com/hackingyseguridad/diccionarios/refs/heads/master/ficheros2.txt -q -O diccionario2.txt --inet4-only
-wc -l diccionario2.txt
-
 echo "...."
 echo "....."
 
