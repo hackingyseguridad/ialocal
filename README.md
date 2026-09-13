@@ -131,6 +131,10 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 
 ---
 
+<img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/opencode.png">
+
+---
+
 ### Referencias
 
 | Recurso | Enlace |
