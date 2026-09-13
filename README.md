@@ -11,12 +11,12 @@ Cuando se trabaja con datos de clientes, resultados de escaneos, IPs internas o 
 - Menores habilidades, quiza algunos de estos modelos en local + herramientas, son menos pesados, menor tamaño o mas antiguos y tenga menos habilidades analiticas en la detección de vulnerabilidades, POC o Exploit, comparado con los ultimos  modelos enromes online, en centros de procesos de datos la nube.
 - Integragacion: Herramientas intermedias, Agentes como: Claude Code, OpenCode, Codex, Hermess, tienen una intergracion alta en el sistema operativo sobre el que corren.
 usan las interfaces de red, LAN o WAN, ejecutan comandos y programas, uso de scripts, uso de discos y memroria para leer y guardar ficheros.
-Ollama por si solo, carece de esa integración, necesitaria un Script que haga de puente con el sistema .
-- Importancia del Agente; El modelo de IA, por sí solo, hace relativamente poco. **La clave está en el Agente o herramienta intermedia**  que lo conecta con el modelo del  entorno y le permite actuar:  Claude Code, Codex, OpenCode, Harness, ..  y/o combinaciones de OLLAMA + Agente + Modelo local offline. (Kali + Ollama + agente + pentesting).
+Ollama por si solo, carece de esa integración, necesitaria un Script que haga de puente con el sistema .  Ollama en solitario carece de esa integración.** Para que un modelo servido por Ollama pueda "actuar" sobre el sistema (como en un flujo Kali + Ollama + agente + pentesting), hace falta un script puente o un agente que traduzca las respuestas del modelo en acciones del sistema
+- Importancia del Agente; El modelo de IA, por sí solo, hace relativamente poco. El LLM solo genera texto/decisiones; es el agente (Claude Code, OpenCode, Codex CLI, **La clave está en el Agente o herramienta intermedia**  que lo conecta con el modelo del  entorno y le permite actuar:  Claude Code, Codex, OpenCode, Harness, ..  y/o combinaciones de OLLAMA + Agente + Modelo local offline. (Kali + Ollama + agente + pentesting).
 - Modelos pequeños antiguos, carecen de compatibilidad (Tool calling / Function calling) con las Herramientas intermedias/Agentes (ClaudeCode, OpenCode, Codex,.), para combinarse con OLLAMA en local, 
-darán muchos problemas.  Los modelos mas compatibles serian mas avanzados p.ej.: deepseek-coder-v2, Qwen3-Coder 30B  moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF, gpt-oss:20b, ... :
+darán muchos problemas.  **Modelos recomendados por compatibilidad avanzada:** `deepseek-coder-v2`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF` y `gpt-oss:20b` destacan por soportar *function calling* de forma más robusta, siendo mejores candidatos para combinarse con agentes en flujos de pentesting local (Kali + Ollama + agente).:
 
-## Ollama + Agente + Modelo local (Kali / Pentesting)
+### Ollama + Agente + Modelo local (Pentesting)
 
 | Agente (Herramienta)      | Modelo IA local Offline OpenSource                                                                 | Notas |
 |---------------------------|--------------------------------------------------------------------------------------------|-------|
@@ -25,13 +25,6 @@ darán muchos problemas.  Los modelos mas compatibles serian mas avanzados p.ej.
 | **OLLAMA + Claude Code**  | `qwen2.5-coder:7b/14b/32b`, `deepseek-coder-v2:16b`, `codellama:13b/34b`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF` | Requiere un proxy/adaptador (p. ej. `claude-code-router` o similar) que traduzca la API de Anthropic a la API de OLLAMA. Modelos sin *function calling* fiable fallan al invocar herramientas del agente. |
 | **OLLAMA + Codex CLI**    | `qwen2.5-coder:32b`, `deepseek-coder-v2`, `gpt-oss:20b`                                     | Codex CLI (OpenAI) admite endpoints compatibles vía configuración de `provider`/`base_url` personalizada. `gpt-oss:20b` es especialmente compatible por ser open-weight de OpenAI, entrenado ya con formato de *tool calling* nativo. |
 | **OLLAMA + Harness**      | `deepseek-coder-v2`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF`, `gpt-oss:20b`       | "agent harness" propio o de terceros; especifica cuál para documentar la integración exacta. La integración (red LAN/WAN, ejecución de comandos, lectura/escritura en disco) la aporta el harness, no el modelo. |
-
-### Notas clave sobre la arquitectura
-
-- **El agente es la pieza crítica, no el modelo.** El LLM solo genera texto/decisiones; es el agente (Claude Code, OpenCode, Codex CLI, Harness) quien tiene la integración real con el SO: acceso a red (LAN/WAN), ejecución de comandos y scripts, lectura/escritura en disco y memoria.
-- **Ollama en solitario carece de esa integración.** Para que un modelo servido por Ollama pueda "actuar" sobre el sistema (como en un flujo Kali + Ollama + agente + pentesting), hace falta un script puente o un agente que traduzca las respuestas del modelo en acciones del sistema.
-- **Tool calling / function calling es el filtro real de compatibilidad.** Modelos pequeños o antiguos (p. ej. `llama3.2:1b`, `gemma3:1b`, `phi3.5:3.8b`) suelen carecer de soporte fiable de *tool calling*, lo que provoca fallos al integrarse con agentes como Claude Code, OpenCode o Codex CLI vía Ollama.
-- **Modelos recomendados por compatibilidad avanzada:** `deepseek-coder-v2`, `hf.co/moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF` y `gpt-oss:20b` destacan por soportar *function calling* de forma más robusta, siendo mejores candidatos para combinarse con agentes en flujos de pentesting local (Kali + Ollama + agente).
 
 
 ---
