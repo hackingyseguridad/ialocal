@@ -96,7 +96,7 @@ También es posible integrarlo en combinacion con Claude Code como front-end, co
 | Mistral-Nemo:12b | 7 GB | 12 GB | `ollama run mistral-nemo` |
 | Qwen2.5-coder:14b * | 9 GB | 16 GB | `ollama run qwen2.5-coder:14b` |
 | Qwen3:14b | 9 GB | 16 GB | `ollama run qwen3:14b` |
-| DeepSeek-Coder-V2:16B | 8.9 GB * | 16 GB | `ollama run deepseek-coder-v2:16b` |
+| DeepSeek-Coder-V2:16B * | 8.9 GB | 16 GB | `ollama run deepseek-coder-v2:16b` |
 | GPT-OSS 20B * | 13 GB | 16 GB | `ollama run gpt-oss:20b` |
 | phi4-mini * | 2.5 GB | 3 GB |  `ollama run phi4-mini` |
 | Mistral-Small | 13 GB | 16 GB | `ollama run mistral-small` |
