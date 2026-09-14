@@ -135,7 +135,11 @@ Este proyecto se distribuye junto con un [descargo de responsabilidad](./DISCLAM
 
 ---
 
+DeepSeel 1.5b
+
 <img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/opencode.png">
+
+Qwen 
 
 <img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/qwen2.png">
 
