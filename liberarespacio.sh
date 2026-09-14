@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# borra logs y libera espacio en Linux Debian
+# (r) hackingyseguridad.com 2026
+
 set -f
 umask 077
 
@@ -47,10 +50,10 @@ clean_dir $HOME/.kde/share/apps/RecentDocuments
 # Navegadores
 find $HOME/.mozilla/firefox -type d -name "*.default-release" 2>/dev/null | while read dir; do
 	if [ -d "$dir/storage/default" ]; then
-		rm -rf "$dir/storage/default"
+		rm -rf "$dir/storage/default" 2>/dev/null
 	fi
 	if [ -d "$dir/datareporting" ]; then
-		rm -rf "$dir/datareporting"
+		rm -rf "$dir/datareporting" 2>/dev/null
 	fi
 done
 
@@ -87,51 +90,51 @@ fi
 # Cache paquetes
 if [ "$(id -u)" -eq 0 ]; then
 	if command -v apt-get >/dev/null 2>&1; then
-		apt-get clean 2>/dev/null
-		apt-get autoclean 2>/dev/null
+		apt-get clean >/dev/null 2>&1
+		apt-get autoclean >/dev/null 2>&1
 		rm -rf /var/cache/apt/archives/*.deb 2>/dev/null
 		rm -rf /var/cache/apt/*.bin 2>/dev/null
 	fi
 	
 	if command -v yum >/dev/null 2>&1; then
-		yum clean all 2>/dev/null
+		yum clean all >/dev/null 2>&1
 		rm -rf /var/cache/yum/* 2>/dev/null
 	fi
 	
 	if command -v dnf >/dev/null 2>&1; then
-		dnf clean all 2>/dev/null
+		dnf clean all >/dev/null 2>&1
 	fi
 	
 	if command -v pacman >/dev/null 2>&1; then
-		pacman -Scc --noconfirm 2>/dev/null
+		pacman -Scc --noconfirm >/dev/null 2>&1
 		rm -rf /var/cache/pacman/pkg/* 2>/dev/null
 	fi
 else
 	if command -v apt-get >/dev/null 2>&1; then
-		sudo apt-get clean 2>/dev/null
-		sudo apt-get autoclean 2>/dev/null
+		sudo apt-get clean >/dev/null 2>&1
+		sudo apt-get autoclean >/dev/null 2>&1
 		sudo rm -rf /var/cache/apt/archives/*.deb 2>/dev/null
 		sudo rm -rf /var/cache/apt/*.bin 2>/dev/null
 	fi
 	
 	if command -v yum >/dev/null 2>&1; then
-		sudo yum clean all 2>/dev/null
+		sudo yum clean all >/dev/null 2>&1
 		sudo rm -rf /var/cache/yum/* 2>/dev/null
 	fi
 	
 	if command -v dnf >/dev/null 2>&1; then
-		sudo dnf clean all 2>/dev/null
+		sudo dnf clean all >/dev/null 2>&1
 	fi
 	
 	if command -v pacman >/dev/null 2>&1; then
-		sudo pacman -Scc --noconfirm 2>/dev/null
+		sudo pacman -Scc --noconfirm >/dev/null 2>&1
 		sudo rm -rf /var/cache/pacman/pkg/* 2>/dev/null
 	fi
 fi
 
 # Logs sistema
 if [ "$(id -u)" -eq 0 ]; then
-	journalctl --vacuum-time=1s 2>/dev/null
+	journalctl --vacuum-time=1s >/dev/null 2>&1
 	rm -rf /var/log/journal/* 2>/dev/null
 	
 	find /var/log -type f -name "*.log" -exec truncate -s 0 {} \; 2>/dev/null
@@ -158,7 +161,7 @@ if [ "$(id -u)" -eq 0 ]; then
 	chmod 640 /var/log/auth.log 2>/dev/null || true
 	chmod 640 /var/log/syslog 2>/dev/null || true
 else
-	sudo journalctl --vacuum-time=1s 2>/dev/null
+	sudo journalctl --vacuum-time=1s >/dev/null 2>&1
 	sudo rm -rf /var/log/journal/* 2>/dev/null
 	sudo find /var/log -type f -name "*.log" -exec truncate -s 0 {} \; 2>/dev/null
 	sudo truncate -s 0 /var/log/auth.log 2>/dev/null
@@ -187,7 +190,7 @@ fi
 # Cache DNS
 if [ "$(id -u)" -eq 0 ]; then
 	if command -v systemd-resolve >/dev/null 2>&1; then
-		systemd-resolve --flush-caches 2>/dev/null
+		systemd-resolve --flush-caches >/dev/null 2>&1
 	fi
 	
 	rm -f /var/cache/nscd/* 2>/dev/null
@@ -203,7 +206,7 @@ if [ "$(id -u)" -eq 0 ]; then
 		fi
 	fi
 else
-	sudo systemd-resolve --flush-caches 2>/dev/null || true
+	sudo systemd-resolve --flush-caches >/dev/null 2>&1 || true
 	sudo rm -f /var/cache/nscd/* 2>/dev/null
 	
 	free_mem=`free | awk '/^Mem:/ {print $4}'`
@@ -221,9 +224,9 @@ fi
 # Docker
 if command -v docker >/dev/null 2>&1; then
 	if [ "$(id -u)" -eq 0 ]; then
-		docker system prune -af 2>/dev/null || true
+		docker system prune -af >/dev/null 2>&1 || true
 	else
-		sudo docker system prune -af 2>/dev/null || true
+		sudo docker system prune -af >/dev/null 2>&1 || true
 	fi
 fi
 
@@ -247,12 +250,12 @@ fi
 # Kernels antiguos
 if command -v dpkg >/dev/null 2>&1; then
 	ACTUAL=`uname -r`
-	dpkg -l | grep linux-image- | grep -v "$ACTUAL" | awk '{print $2}' | while read KERNEL; do
+	dpkg -l 2>/dev/null | grep linux-image- | grep -v "$ACTUAL" | awk '{print $2}' | while read KERNEL; do
 		if [ -n "$KERNEL" ]; then
 			if [ "$(id -u)" -eq 0 ]; then
-				apt-get -y purge "$KERNEL" 2>/dev/null
+				apt-get -y purge "$KERNEL" >/dev/null 2>&1
 			else
-				sudo apt-get -y purge "$KERNEL" 2>/dev/null
+				sudo apt-get -y purge "$KERNEL" >/dev/null 2>&1
 			fi
 		fi
 	done
