@@ -23,7 +23,6 @@ darán muchos problemas.  **Modelos recomendados por compatibilidad avanzada:** 
 
 <img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/minipc.png">
 
----
 
 ### Ollama + Agente + Modelo local (Pentesting/Kali Linux)
 
