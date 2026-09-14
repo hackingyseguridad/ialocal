@@ -39,7 +39,7 @@ darán muchos problemas.  **Modelos recomendados por compatibilidad avanzada:** 
 ### Arquitectura 
 
 
-[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ialocal/raw/main/ialocal.png)](https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png)
+[![http://hackingyseguridad.com/](https://github.com/hackingyseguridad/ialocal/raw/main/arquitectura.png)](https://github.com/hackingyseguridad/ialocal/blob/main/arquitectura.png)
 
 ---
 
