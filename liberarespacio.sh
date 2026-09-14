@@ -1,170 +1,271 @@
 #!/bin/sh
-# ======================================================
-# Script: limpieza maxima bash Shell en sistema Linux
-# Descripcion: Limpieza agresiva para liberar espacio
-# Compatible: Bash 1.0.x / sh antiguo
-# ======================================================
 
-echo ""
-echo "=== LIMPIEZA MAXIMA DE ESPACIO EN LINUX ==="
-echo ""
+set -f
+umask 077
 
-# Funcion para mostrar espacio antes/despues
-mostrar_espacio() {
-    echo "Espacio en /:"
-    df -h / | grep -v "Filesystem"
+clean_dir() {
+	if [ -d "$1" ]; then
+		rm -rf "$1" 2>/dev/null
+	fi
 }
 
-# Mostrar espacio inicial
-echo "[*] Espacio antes de limpiar:"
-mostrar_espacio
-echo ""
+clean_file() {
+	if [ -f "$1" ]; then
+		rm -f "$1" 2>/dev/null
+	fi
+}
 
-# 1. LIMPIAR CACHE DE USUARIO (si existe)
-echo "[1] Limpiando cache de usuario..."
+truncate_file() {
+	if [ -f "$1" ]; then
+		> "$1" 2>/dev/null
+	fi
+}
+
+# Historiales
+for hist in $HOME/.bash_history $HOME/.zsh_history $HOME/.sh_history $HOME/.python_history $HOME/.node_repl_history $HOME/.sqlite_history $HOME/.mysql_history; do
+	if [ -f "$hist" ]; then
+		truncate_file "$hist"
+	fi
+done
+
+clean_file $HOME/.recently-used
+clean_file $HOME/.local/share/recently-used.xbel
+
+# Cache usuario
 if [ -d "$HOME/.cache" ]; then
-    rm -rf $HOME/.cache/* 2>/dev/null
-    echo "    - Cache de usuario limpiado"
+	rm -rf $HOME/.cache/* 2>/dev/null
 fi
 
 if [ -d "$HOME/.thumbnails" ]; then
-    rm -rf $HOME/.thumbnails/* 2>/dev/null
-    echo "    - Miniaturas eliminadas"
+	rm -rf $HOME/.thumbnails/* 2>/dev/null
 fi
 
-# 2. LIMPIAR HISTORIALES DE COMANDOS
-echo "[2] Limpiando historiales..."
-for HIST in $HOME/.bash_history $HOME/.zsh_history $HOME/.python_history; do
-    if [ -f "$HIST" ]; then
-        rm -f "$HIST" 2>/dev/null
-        echo "    - Eliminado: $HIST"
-    fi
+clean_dir $HOME/.local/share/Trash
+clean_dir $HOME/.local/share/RecentDocuments
+clean_dir $HOME/.kde/share/apps/RecentDocuments
+
+# Navegadores
+find $HOME/.mozilla/firefox -type d -name "*.default-release" 2>/dev/null | while read dir; do
+	if [ -d "$dir/storage/default" ]; then
+		rm -rf "$dir/storage/default"
+	fi
+	if [ -d "$dir/datareporting" ]; then
+		rm -rf "$dir/datareporting"
+	fi
 done
 
-# 3. LIMPIAR DIRECTORIOS TEMPORALES
-echo "[3] Limpiando temporales..."
-if [ -d "/tmp" ]; then
-    rm -rf /tmp/* 2>/dev/null
-    echo "    - /tmp limpiado"
-fi
+clean_dir $HOME/.mozilla/firefox
+clean_dir $HOME/.cache/mozilla
+clean_dir $HOME/.cache/google-chrome
+clean_dir $HOME/.cache/chromium
+clean_dir $HOME/.config/google-chrome/Default/Service\ Worker
+clean_dir $HOME/.config/chromium/Default/Service\ Worker
 
-if [ -d "/var/tmp" ]; then
-    rm -rf /var/tmp/* 2>/dev/null
-    echo "    - /var/tmp limpiado"
-fi
+# Sesión
+clean_file $HOME/.xsession-errors
+find $HOME/.xsession-errors* -type f -delete 2>/dev/null
+clean_file $HOME/.ssh/known_hosts
+find $HOME/.gnupg -name '*~' -type f -delete 2>/dev/null
+clean_dir $HOME/.local/share/mail
+clean_dir $HOME/.docker
+clean_file $HOME/.docker/config.json
 
-# 4. LIMPIAR CACHE DE APT (si existe)
-if command -v apt-get >/dev/null 2>&1; then
-    echo "[4] Limpiando cache de APT..."
-    apt-get clean 2>/dev/null
-    apt-get autoclean 2>/dev/null
-    rm -rf /var/cache/apt/archives/*.deb 2>/dev/null
-    echo "    - Cache APT limpiado"
-fi
-
-# 5. LIMPIAR CACHE DE DNF/YUM (si existe)
-if command -v dnf >/dev/null 2>&1; then
-    echo "[5] Limpiando cache de DNF..."
-    dnf clean all 2>/dev/null
-    echo "    - Cache DNF limpiado"
-elif command -v yum >/dev/null 2>&1; then
-    echo "[5] Limpiando cache de YUM..."
-    yum clean all 2>/dev/null
-    echo "    - Cache YUM limpiado"
-fi
-
-# 6. LIMPIAR LOGS ANTIGUOS
-echo "[6] Limpiando archivos de log..."
-# Vaciar logs del sistema
-if [ -d "/var/log" ]; then
-    find /var/log -type f -name "*.log" -exec cp /dev/null {} \; 2>/dev/null
-    find /var/log -type f -name "*.log.*" -exec rm -f {} \; 2>/dev/null
-    find /var/log -type f -name "*.gz" -exec rm -f {} \; 2>/dev/null
-    echo "    - Logs del sistema vaciados"
-fi
-
-# 7. ELIMINAR PAQUETES HUERFANOS
-echo "[7] Eliminando paquetes huerfanos..."
-if command -v deborphan >/dev/null 2>&1; then
-    deborphan | xargs apt-get -y remove --purge 2>/dev/null
-    echo "    - Paquetes huerfanos eliminados"
-fi
-
-# 8. LIMPIAR CACHE DE PIP (Python)
+# Pip
 if [ -d "$HOME/.cache/pip" ]; then
-    echo "[8] Limpiando cache de pip..."
-    rm -rf $HOME/.cache/pip/* 2>/dev/null
-    echo "    - Cache pip limpiado"
+	rm -rf $HOME/.cache/pip/* 2>/dev/null
 fi
 
-# 9. ELIMINAR NUCLEOS ANTIGUOS (solo Debian/Ubuntu)
-if command -v dpkg >/dev/null 2>&1; then
-    echo "[9] Eliminando kernels antiguos..."
-    # Obtener kernel actual
-    ACTUAL=$(uname -r)
-    # Listar kernels instalados (excluyendo el actual)
-    dpkg -l | grep linux-image- | grep -v "$ACTUAL" | awk '{print $2}' | while read -r KERNEL; do
-        echo "    - Eliminando: $KERNEL"
-        apt-get -y purge "$KERNEL" 2>/dev/null
-    done
-fi
-
-# 10. LIMPIAR BASURA DEL SISTEMA
-echo "[10] Limpiando archivos basura..."
-# Archivos core dump
-find / -type f -name "core.*" -exec rm -f {} \; 2>/dev/null
-find / -type f -name "*.core" -exec rm -f {} \; 2>/dev/null
-# Archivos temporales de editores
-find / -type f -name "*~" -exec rm -f {} \; 2>/dev/null
-find / -type f -name "*.swp" -exec rm -f {} \; 2>/dev/null
-find / -type f -name ".DS_Store" -exec rm -f {} \; 2>/dev/null
-
-# 11. VACIAR PAPELERA
-echo "[11] Vaciando papelera..."
-if [ -d "$HOME/.local/share/Trash" ]; then
-    rm -rf $HOME/.local/share/Trash/* 2>/dev/null
-    echo "    - Papelera vaciada"
-fi
-
-# 12. LIMPIAR JOURNALD (si existe)
-if command -v journalctl >/dev/null 2>&1; then
-    echo "[12] Limitando logs de journald..."
-    journalctl --rotate 2>/dev/null
-    journalctl --vacuum-time=1s 2>/dev/null
-    echo "    - Journald limpiado"
-fi
-
-echo ""
-echo "=== LIMPIEZA COMPLETADA ==="
-echo ""
-echo "[*] Espacio despues de limpiar:"
-mostrar_espacio
-echo ""
-
-# Resumen final
-echo "[+] Resumen de espacio recuperado:"
-echo "    Revisa df -h para detalles"
-echo ""
-echo
-echo "Buscando archivos mayores de 500MB..."
-
-find / -type f -size +500M 2>/dev/null
-
-echo ""
-printf "¿Eliminar archivos encontrados? (s/n): "
-read RESP
-
-if [ "$RESP" = "s" ] || [ "$RESP" = "S" ]; then
-
-    find / -type f -size +500M 2>/dev/null | while read FILE
-    do
-        echo "Borrando: $FILE"
-        rm -f "$FILE"
-    done
-
-    echo "Limpieza completada"
-
+# Temporales
+if [ "$(id -u)" -eq 0 ]; then
+	rm -rf /tmp/* 2>/dev/null
+	rm -rf /var/tmp/* 2>/dev/null
 else
-    echo "Cancelado"
+	sudo rm -rf /tmp/* 2>/dev/null
+	sudo rm -rf /var/tmp/* 2>/dev/null
 fi
+
+# Cache paquetes
+if [ "$(id -u)" -eq 0 ]; then
+	if command -v apt-get >/dev/null 2>&1; then
+		apt-get clean 2>/dev/null
+		apt-get autoclean 2>/dev/null
+		rm -rf /var/cache/apt/archives/*.deb 2>/dev/null
+		rm -rf /var/cache/apt/*.bin 2>/dev/null
+	fi
+	
+	if command -v yum >/dev/null 2>&1; then
+		yum clean all 2>/dev/null
+		rm -rf /var/cache/yum/* 2>/dev/null
+	fi
+	
+	if command -v dnf >/dev/null 2>&1; then
+		dnf clean all 2>/dev/null
+	fi
+	
+	if command -v pacman >/dev/null 2>&1; then
+		pacman -Scc --noconfirm 2>/dev/null
+		rm -rf /var/cache/pacman/pkg/* 2>/dev/null
+	fi
+else
+	if command -v apt-get >/dev/null 2>&1; then
+		sudo apt-get clean 2>/dev/null
+		sudo apt-get autoclean 2>/dev/null
+		sudo rm -rf /var/cache/apt/archives/*.deb 2>/dev/null
+		sudo rm -rf /var/cache/apt/*.bin 2>/dev/null
+	fi
+	
+	if command -v yum >/dev/null 2>&1; then
+		sudo yum clean all 2>/dev/null
+		sudo rm -rf /var/cache/yum/* 2>/dev/null
+	fi
+	
+	if command -v dnf >/dev/null 2>&1; then
+		sudo dnf clean all 2>/dev/null
+	fi
+	
+	if command -v pacman >/dev/null 2>&1; then
+		sudo pacman -Scc --noconfirm 2>/dev/null
+		sudo rm -rf /var/cache/pacman/pkg/* 2>/dev/null
+	fi
+fi
+
+# Logs sistema
+if [ "$(id -u)" -eq 0 ]; then
+	journalctl --vacuum-time=1s 2>/dev/null
+	rm -rf /var/log/journal/* 2>/dev/null
+	
+	find /var/log -type f -name "*.log" -exec truncate -s 0 {} \; 2>/dev/null
+	truncate_file /var/log/auth.log
+	truncate_file /var/log/syslog
+	truncate_file /var/log/kern.log
+	truncate_file /var/log/dmesg
+	truncate_file /var/log/btmp
+	truncate_file /var/log/faillog
+	truncate_file /var/log/tallylog
+	
+	find /var/log -type f \( -name "*.gz" -o -name "*.log.*" -o -name "*.1" -o -name "*.old" \) -delete 2>/dev/null
+	
+	if command -v shred >/dev/null 2>&1; then
+		shred -n 7 -z -u /var/log/wtmp 2>/dev/null || true
+		shred -n 7 -z -u /var/log/lastlog 2>/dev/null || true
+		shred -n 7 -z /var/log/auth.log.* 2>/dev/null || true
+		shred -n 7 -z /var/log/syslog.* 2>/dev/null || true
+	fi
+	
+	> /var/log/wtmp 2>/dev/null || true
+	> /var/log/lastlog 2>/dev/null || true
+	> /var/log/btmp 2>/dev/null || true
+	chmod 640 /var/log/auth.log 2>/dev/null || true
+	chmod 640 /var/log/syslog 2>/dev/null || true
+else
+	sudo journalctl --vacuum-time=1s 2>/dev/null
+	sudo rm -rf /var/log/journal/* 2>/dev/null
+	sudo find /var/log -type f -name "*.log" -exec truncate -s 0 {} \; 2>/dev/null
+	sudo truncate -s 0 /var/log/auth.log 2>/dev/null
+	sudo truncate -s 0 /var/log/syslog 2>/dev/null
+	sudo truncate -s 0 /var/log/kern.log 2>/dev/null
+	sudo truncate -s 0 /var/log/dmesg 2>/dev/null
+	sudo truncate -s 0 /var/log/btmp 2>/dev/null
+	sudo truncate -s 0 /var/log/faillog 2>/dev/null
+	sudo truncate -s 0 /var/log/tallylog 2>/dev/null
+	sudo find /var/log -type f \( -name "*.gz" -o -name "*.log.*" -o -name "*.1" -o -name "*.old" \) -delete 2>/dev/null
+	
+	if command -v shred >/dev/null 2>&1; then
+		sudo shred -n 7 -z -u /var/log/wtmp 2>/dev/null || true
+		sudo shred -n 7 -z -u /var/log/lastlog 2>/dev/null || true
+		sudo shred -n 7 -z /var/log/auth.log.* 2>/dev/null || true
+		sudo shred -n 7 -z /var/log/syslog.* 2>/dev/null || true
+	fi
+	
+	sudo sh -c '> /var/log/wtmp 2>/dev/null || true'
+	sudo sh -c '> /var/log/lastlog 2>/dev/null || true'
+	sudo sh -c '> /var/log/btmp 2>/dev/null || true'
+	sudo chmod 640 /var/log/auth.log 2>/dev/null || true
+	sudo chmod 640 /var/log/syslog 2>/dev/null || true
+fi
+
+# Cache DNS
+if [ "$(id -u)" -eq 0 ]; then
+	if command -v systemd-resolve >/dev/null 2>&1; then
+		systemd-resolve --flush-caches 2>/dev/null
+	fi
+	
+	rm -f /var/cache/nscd/* 2>/dev/null
+	
+	free_mem=`free | awk '/^Mem:/ {print $4}'`
+	total_mem=`free | awk '/^Mem:/ {print $2}'`
+	
+	if [ "$total_mem" -gt 0 ]; then
+		ratio=$((free_mem * 100 / total_mem))
+		if [ "$ratio" -gt 20 ]; then
+			sync 2>/dev/null
+			echo 3 | tee /proc/sys/vm/drop_caches >/dev/null 2>&1
+		fi
+	fi
+else
+	sudo systemd-resolve --flush-caches 2>/dev/null || true
+	sudo rm -f /var/cache/nscd/* 2>/dev/null
+	
+	free_mem=`free | awk '/^Mem:/ {print $4}'`
+	total_mem=`free | awk '/^Mem:/ {print $2}'`
+	
+	if [ "$total_mem" -gt 0 ]; then
+		ratio=$((free_mem * 100 / total_mem))
+		if [ "$ratio" -gt 20 ]; then
+			sudo sync 2>/dev/null
+			echo 3 | sudo tee /proc/sys/vm/drop_caches >/dev/null 2>&1
+		fi
+	fi
+fi
+
+# Docker
+if command -v docker >/dev/null 2>&1; then
+	if [ "$(id -u)" -eq 0 ]; then
+		docker system prune -af 2>/dev/null || true
+	else
+		sudo docker system prune -af 2>/dev/null || true
+	fi
+fi
+
+# Archivos basura
+find / -type f -name "core.*" -delete 2>/dev/null
+find / -type f -name "*.core" -delete 2>/dev/null
+find / -type f -name "*~" -delete 2>/dev/null
+find / -type f -name "*.swp" -delete 2>/dev/null
+find / -type f -name ".DS_Store" -delete 2>/dev/null
+
+if [ "$(id -u)" -eq 0 ]; then
+	find /var -name "*lock*" -type f -delete 2>/dev/null
+	rm -f /var/lib/systemd/coredump/* 2>/dev/null
+	rm -f /core /var/core /*.core 2>/dev/null
+else
+	sudo find /var -name "*lock*" -type f -delete 2>/dev/null
+	sudo rm -f /var/lib/systemd/coredump/* 2>/dev/null
+	sudo rm -f /core /var/core /*.core 2>/dev/null
+fi
+
+# Kernels antiguos
+if command -v dpkg >/dev/null 2>&1; then
+	ACTUAL=`uname -r`
+	dpkg -l | grep linux-image- | grep -v "$ACTUAL" | awk '{print $2}' | while read KERNEL; do
+		if [ -n "$KERNEL" ]; then
+			if [ "$(id -u)" -eq 0 ]; then
+				apt-get -y purge "$KERNEL" 2>/dev/null
+			else
+				sudo apt-get -y purge "$KERNEL" 2>/dev/null
+			fi
+		fi
+	done
+fi
+
+# Archivos grandes
+find / -type f -size +500M 2>/dev/null | while read ARCHIVO; do
+	if [ "$(id -u)" -eq 0 ]; then
+		rm -f "$ARCHIVO"
+	else
+		sudo rm -f "$ARCHIVO"
+	fi
+done
+
+exit 0
 
