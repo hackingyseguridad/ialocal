@@ -4,7 +4,7 @@
 
 Modelos de IA en local, offline y aislados, sin conexión a Internet, scripts de instalación y arranque rápido para usar asistentes de IA (Ollama, Qwen, Claude Code, OpenCode) como apoyo en tareas de hacking ético y pentesting, sin enviar datos a la nube; Es una colección de scripts en lenguaje, bash shell linux, python3 para **Linux/Debian/Kali** que automatizan la instalación de las herramientas necesarias para tener un asistente de IA funcionando **100% en local**, con privacidad , sin depender de servicios en la nube, y usarlo como herramienta para pruebas de deteción de vulnerabilides, pruebas de concepto y explotación , en auditorías de seguridad y pruebas de penetración autorizadas, hacking.
 
-<img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/iqlodql.png">
+<img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/ialocal.png">
 
 Cuando se trabaja con datos de clientes, resultados de escaneos, vulnerabilidades CVE, IPs internas o hallazgos de una auditoría, enviar esa información a un proveedor de IA en un centro de proceso de datos en la nube puede ser un problema de **confidencialidad** y privacidad: - **Usando IA local:** 
 
