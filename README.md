@@ -139,7 +139,7 @@ DeepSeel 1.5b
 
 <img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/opencode.png">
 
-Qwen 
+Qwen 2.5
 
 <img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/qwen2.png">
 
