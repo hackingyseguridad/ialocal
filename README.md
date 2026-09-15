@@ -29,7 +29,7 @@ darán muchos problemas.  **Modelos recomendados por compatibilidad avanzada:** 
 | Agente (Herramienta)      | Modelo IA local Offline | Comando: Ollama + Agente + Modelo (Kali/Pentesting) |
 |---------------------------|-----------------------------------------------|---------|
 | **OLLAMA**                | `deepseek-coder-v2:16b` | `ollama run deepseek-coder-v2:16b` |
-| **OLLAMA + OpenCode**     | `deepseek-coder-v2:16b` | `ollama launch opencode --model deepseek-coder-v2:16b` |
+| **OLLAMA + OpenCode**     | `deepseek-coder-v2:16b` | `ollama launch opencode --model hf.co/josephmayo/Qwen2.5-0.5B-Unfettered` |
 | **OLLAMA + Claude Code**  | `deepseek-coder-v2:16b` | `ollama launch claude --model deepseek-coder-v2:16b ` |
 | **OLLAMA + Codex CLI**    | `gpt-oss:20b` | `codex --oss --local-provider ollama --model gpt-oss:20b` |
 | **OLLAMA + Harness**      | `deepseek-coder-v2:16b` | `harness run -model deepseek-coder-v2:16b` |
