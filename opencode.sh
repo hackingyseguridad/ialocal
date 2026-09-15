@@ -29,4 +29,6 @@ export LC_ALL=es_ES.UTF-8
 sleep 3
 
 # Open Code impulsado por hf.co/josephmayo/Qwen2.5-0.5B-Unfettered offline!!!
-ollama launch opencode --model hf.co/josephmayo/Qwen2.5-0.5B-Unfettered
+# ollama launch opencode --model hf.co/josephmayo/Qwen2.5-0.5B-Unfettered
+ollama launch opencode --model qwen3:8b
+
