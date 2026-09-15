@@ -21,11 +21,11 @@ echo
 ~/.local/bin/./claude -V
 claude doctor
 echo
-echo "Interface OPENCODE , impulsado por otro modelo online:cloud: -- hackingyseguridad.com -- v1.0 "
+echo "Interface OPENCODE , impulsado por otro modelo en local offline: -- hackingyseguridad.com -- v1.0 "
 echo "/"
 export LANG=es_US.UTF-8
 export LC_ALL=es_ES.UTF-8
 sleep 3
 
-# CLaude Code impulsado por deepseek-r1:1.5b offline!!!
-ollama launch opencode --model deepseek-r1:1.5b
+# CLaude Code impulsado por hf.co/josephmayo/Qwen2.5-0.5B-Unfettered offline!!!
+ollama run hf.co/josephmayo/Qwen2.5-0.5B-Unfettered
