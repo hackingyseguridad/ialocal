@@ -7,6 +7,7 @@
 #  curl -fsSL https://claude.ai/install.sh | bash
 echo
 echo "... "
+echo "ollama launch opencode --model hf.co/josephmayo/Qwen2.5-0.5B-Unfettered"
 echo
 ollama -v
 echo " "
