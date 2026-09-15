@@ -27,5 +27,5 @@ export LANG=es_US.UTF-8
 export LC_ALL=es_ES.UTF-8
 sleep 3
 
-# CLaude Code impulsado por hf.co/josephmayo/Qwen2.5-0.5B-Unfettered offline!!!
+# Open Code impulsado por hf.co/josephmayo/Qwen2.5-0.5B-Unfettered offline!!!
 ollama run hf.co/josephmayo/Qwen2.5-0.5B-Unfettered
