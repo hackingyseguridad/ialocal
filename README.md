@@ -1,4 +1,6 @@
-### ialocal: Ejecutar modelos de inteligencia artificial, en un PC en local, offline, sin internet, maxima privacidad 
+### ialocal 
+
+Ejecutar modelos de inteligencia artificial, en un PC en local, offline, sin internet, maxima privacidad 
 
 <img style="float:left" alt="http://hackingyseguridad.com/" src="https://github.com/hackingyseguridad/ialocal/blob/main/banner2.png">
 
