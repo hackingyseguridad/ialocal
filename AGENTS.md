@@ -56,7 +56,7 @@ opencode --agent build
 **Cambiar de agente durante la sesión:** tecla `Tab`
 (alterna entre los agentes primarios configurados, p. ej. `build` ↔ `plan`)
 
-> ⚠️ Esta configuración retira los diálogos de confirmación de OpenCode para los patrones marcados como `allow`. No sustituye la protección frente a inyección de prompt ni frente a instrucciones maliciosas incrustadas en la salida de herramientas de escaneo.
+>  Esta configuración retira los diálogos de confirmación de OpenCode para los patrones marcados como `allow`. No sustituye la protección frente a inyección de prompt ni frente a instrucciones maliciosas incrustadas en la salida de herramientas de escaneo.
 
 ---
 
