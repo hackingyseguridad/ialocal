@@ -127,11 +127,9 @@ También es posible integrarlo en combinacion con Claude Code como front-end, co
 
 ---
 
-# IA aplicada a la Ciberseguridad Ofensiva — *Offensive IA* (edición OpenCode)
+### IA aplicada a la Ciberseguridad Ofensiva — *Offensive IA* (edición OpenCode)
 
 > **Inteligencia Artificial aplicada a la detección y explotación de vulnerabilidades en entornos de auditoría de seguridad autorizada, usando OpenCode como agente de codificación.**
-
-📖 [INTRODUCCIÓN](https://github.com/hackingyseguridad/IA/blob/main/INTRODUCCION.md) · 💻 [USO IA POR CONSOLA TERMINAL(CLI)](https://github.com/hackingyseguridad/IA/blob/main/CONSOLA.md) · 📝 [PROMPTS](https://github.com/hackingyseguridad/IA/blob/main/PROMPTS.md) · 📝 [AGENTS](./AGENTS.md) · ⚖️ [AVISO LEGAL](https://github.com/hackingyseguridad/IA/blob/main/DISCLAIMER.md)
 
 ---
 
